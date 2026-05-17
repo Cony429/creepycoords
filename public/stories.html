@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Stories — Haunted Places & Paranormal Accounts | CreepyCoords</title>
+<meta name="description" content="Browse all haunted locations, paranormal accounts, and creepy legends documented on CreepyCoords. Real places. Real dread.">
+<link rel="canonical" href="https://creepycoords.com/stories">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --blood: #8B0000; --blood-light: #B22222; --fog: #0e0e1a; --text: #e4e4e8; --muted: #777; --border: rgba(255,255,255,0.07); --border-red: rgba(139,0,0,0.35); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--fog); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+  a { text-decoration: none; color: inherit; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 1px solid var(--border-red); background: rgba(8,8,16,0.92); position: sticky; top: 0; z-index: 200; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Creepster', cursive; font-size: 1.7rem; color: var(--blood-light); letter-spacing: 3px; text-shadow: 0 0 24px rgba(139,0,0,0.45); animation: flicker 9s infinite; }
+  .logo span { color: #ddd; }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); font-family: 'Special Elite', serif; font-size: 0.85rem; letter-spacing: 1.5px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blood-light); }
+  .nav-cta { background: var(--blood) !important; color: #fff !important; padding: 8px 20px; border: 1px solid var(--blood-light); border-radius: 3px; }
+  .page-header { padding: 64px 40px 48px; max-width: 1120px; margin: 0 auto; }
+  .page-header h1 { font-family: 'Creepster', cursive; font-size: clamp(2.5rem, 6vw, 4rem); color: #fff; letter-spacing: 3px; margin-bottom: 12px; }
+  .page-header h1 span { color: var(--blood-light); }
+  .page-header p { font-family: 'Special Elite', serif; color: var(--muted); font-size: 0.95rem; letter-spacing: 1px; }
+  .filters { padding: 0 40px 32px; max-width: 1120px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; }
+  .filter-btn { font-family: 'Special Elite', serif; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 7px 18px; border-radius: 2px; cursor: pointer; transition: all 0.2s; border: 1px solid var(--border); background: transparent; color: var(--muted); }
+  .filter-btn:hover, .filter-btn.active { background: var(--blood); border-color: var(--blood-light); color: #fff; }
+  .stories-grid { padding: 0 40px 80px; max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+  .card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: all 0.25s; cursor: pointer; display: flex; flex-direction: column; }
+  .card:hover { border-color: var(--border-red); background: rgba(139,0,0,0.06); transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+  .card-thumb { height: 160px; background: #08080f; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .card-thumb-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(139,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,0,0,0.04) 1px, transparent 1px); background-size: 22px 22px; }
+  .card-thumb-icon { font-size: 3rem; z-index: 1; position: relative; }
+  .card-thumb-fade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%); }
+  .card-type { position: absolute; top: 12px; left: 12px; background: rgba(139,0,0,0.85); color: #fff; font-size: 0.65rem; padding: 3px 10px; border-radius: 2px; font-family: 'Special Elite', serif; letter-spacing: 1.5px; text-transform: uppercase; z-index: 2; }
+  .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+  .card-loc { font-size: 0.7rem; color: var(--blood-light); font-family: 'Special Elite', serif; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .card-title { font-family: 'Special Elite', serif; font-size: 1rem; color: #fff; margin-bottom: 10px; line-height: 1.45; flex: 1; }
+  .card-excerpt { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+  .card-foot { display: flex; align-items: center; justify-content: space-between; font-size: 0.7rem; color: rgba(255,255,255,0.2); font-family: 'Special Elite', serif; border-top: 1px solid var(--border); padding-top: 12px; }
+  .card-scare { color: var(--blood-light); }
+  .submit-band { background: rgba(139,0,0,0.07); border-top: 1px solid var(--border-red); border-bottom: 1px solid var(--border-red); padding: 56px 40px; text-align: center; }
+  .submit-band h2 { font-family: 'Creepster', cursive; font-size: 2rem; color: #fff; letter-spacing: 2px; margin-bottom: 12px; }
+  .submit-band p { font-family: 'Special Elite', serif; color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; line-height: 1.8; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .btn-primary { background: var(--blood); color: #fff; border: 1px solid var(--blood-light); padding: 13px 32px; font-family: 'Special Elite', serif; font-size: 0.92rem; letter-spacing: 1.5px; cursor: pointer; border-radius: 3px; transition: all 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--blood-light); transform: translateY(-2px); }
+  footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Creepster', cursive; font-size: 1.3rem; color: rgba(139,0,0,0.5); letter-spacing: 2px; }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.12); font-family: 'Special Elite', serif; letter-spacing: 1px; }
+  @keyframes flicker { 0%,89%,91%,95%,100% { opacity: 1; } 90% { opacity: 0.35; } 93% { opacity: 0.7; } 94% { opacity: 0.4; } }
+  @media (max-width: 768px) { nav { padding: 14px 20px; } .page-header { padding: 48px 20px 32px; } .filters { padding: 0 20px 24px; } .stories-grid { padding: 0 20px 56px; } footer { padding: 24px 20px; } }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FG91VP2HX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-8FG91VP2HX");</script></head>
+<body>
+<nav>
+  <a href="/" class="logo">Creepy<span>Coords</span></a>
+  <ul class="nav-links">
+    <li><a href="/#map">Map</a></li>
+    <li><a href="/stories">Stories</a></li>
+    <li><a href="/#categories">Categories</a></li>
+    <li><a href="/submit" class="nav-cta">Submit a Story</a></li>
+  </ul>
+</nav>
+<div class="page-header">
+  <h1>All <span>Stories</span></h1>
+  <p>Documented haunted locations, paranormal accounts, and verified legends — from around the world.</p>
+</div>
+<div class="filters">
+  <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+  <button class="filter-btn" onclick="filterCards('hotel', this)">Hotels</button>
+  <button class="filter-btn" onclick="filterCards('prison', this)">Prisons</button>
+  <button class="filter-btn" onclick="filterCards('hospital', this)">Hospitals</button>
+  <button class="filter-btn" onclick="filterCards('underground', this)">Underground</button>
+  <button class="filter-btn" onclick="filterCards('legend', this)">Legends & Rituals</button>
+  <button class="filter-btn" onclick="filterCards('plantation', this)">Plantations</button>
+  <button class="filter-btn" onclick="filterCards('forest', this)">Forests</button>
+  <button class="filter-btn" onclick="filterCards('crime', this)">True Crime</button>
+</div>
+<div class="stories-grid" id="storiesGrid">
+
+  <div class="card" data-type="hospital" onclick="location.href='/stories/gonjiam'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏥</div><div class="card-thumb-fade"></div><span class="card-type">Abandoned Hospital</span></div>
+    <div class="card-body"><div class="card-loc">📍 Gwangju, South Korea</div><div class="card-title">Gonjiam: The Asylum That Broke Korea's Bravest Ghost Hunters</div><div class="card-excerpt">CNN called it one of the 7 freakiest places on Earth. The owner fled overnight. Room 207 is where visitors stop going further.</div><div class="card-foot"><span>13 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="forest" onclick="location.href='/stories/aokigahara'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🌲</div><div class="card-thumb-fade"></div><span class="card-type">Haunted Forest</span></div>
+    <div class="card-body"><div class="card-loc">📍 Mt. Fuji, Japan</div><div class="card-title">Aokigahara: The Forest That Swallows People Whole</div><div class="card-excerpt">Compasses stop working inside it. The government stopped publishing the death count because publishing it made the numbers worse.</div><div class="card-foot"><span>12 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="crime" onclick="location.href='/stories/island-of-the-dolls'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🪆</div><div class="card-thumb-fade"></div><span class="card-type">Haunted Island</span></div>
+    <div class="card-body"><div class="card-loc">📍 Xochimilco, Mexico</div><div class="card-title">Island of the Dolls: The Man Who Spoke to a Dead Girl for 50 Years</div><div class="card-excerpt">Don Julian found a dead girl in the canal. He hung a doll for her. Then thousands. He died in 2001 — drowned in the same spot the girl did.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="hotel" onclick="location.href='/stories/cecil-hotel'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏨</div><div class="card-thumb-fade"></div><span class="card-type">Haunted Hotel</span></div>
+    <div class="card-body"><div class="card-loc">📍 Los Angeles, CA</div><div class="card-title">The Cecil Hotel: 600 Deaths, One Elevator, and Elisa Lam</div><div class="card-excerpt">Two serial killers stayed here while active. Then Elisa Lam disappeared. The elevator footage has never been fully explained.</div><div class="card-foot"><span>12 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="plantation" onclick="location.href='/stories/lalaurie-mansion'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏚</div><div class="card-thumb-fade"></div><span class="card-type">Historic Mansion</span></div>
+    <div class="card-body"><div class="card-loc">📍 New Orleans, LA</div><div class="card-title">LaLaurie Mansion: The Society Woman Who Tortured Slaves in Her Attic</div><div class="card-excerpt">New Orleans' most celebrated hostess. When her mansion caught fire, rescuers broke down a locked door and found what she had been hiding for years.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="underground" onclick="location.href='/stories/catacombs-paris'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">💀</div><div class="card-thumb-fade"></div><span class="card-type">Underground Ossuary</span></div>
+    <div class="card-body"><div class="card-loc">📍 Paris, France</div><div class="card-title">Catacombs of Paris: Six Million Dead Beneath the City of Light</div><div class="card-excerpt">300km of tunnels. Six million bones built into the walls. In 1793, a man entered the illegal section and was found 11 years later — dead, close to the exit.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="crime" onclick="location.href='/stories/villisca-axe-murder-house'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🪓</div><div class="card-thumb-fade"></div><span class="card-type">True Crime</span></div>
+    <div class="card-body"><div class="card-loc">📍 Villisca, Iowa</div><div class="card-title">Villisca Axe Murder House: Eight Dead, No Answers, 110 Years Later</div><div class="card-excerpt">Eight people killed in their sleep in 1912. The killer covered every mirror. The case is still open. Visitors still hear children crying at 3am.</div><div class="card-foot"><span>12 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="legend" onclick="location.href='/stories/korean-elevator-game'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🛗</div><div class="card-thumb-fade"></div><span class="card-type">Korean Legend</span></div>
+    <div class="card-body"><div class="card-loc">📍 South Korea</div><div class="card-title">The Elevator Game: 10 Floors, Wrong World, No Way Back</div><div class="card-excerpt">Press the floors in the exact order. A woman will board on the 5th floor. Do not look at her. If the elevator goes up instead of down — you've crossed over.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="hotel" onclick="location.href='/stories/stanley-hotel'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏨</div><div class="card-thumb-fade"></div><span class="card-type">Haunted Hotel</span></div>
+    <div class="card-body"><div class="card-loc">📍 Estes Park, Colorado</div><div class="card-title">Room 217: The Night Stephen King Checked In and Never Really Left</div><div class="card-excerpt">King woke at 3am to a child laughing in the corridor. No children were on the floor. By the time he finished his cigarette, he had the outline of The Shining.</div><div class="card-foot"><span>9 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="hospital" onclick="location.href='/stories/waverly-hills'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏥</div><div class="card-thumb-fade"></div><span class="card-type">Abandoned Hospital</span></div>
+    <div class="card-body"><div class="card-loc">📍 Louisville, Kentucky</div><div class="card-title">The Body Chute: 63,000 Patients Died Here. Some Never Left.</div><div class="card-excerpt">Staff built a 500-foot tunnel to remove bodies without surviving patients seeing the death toll. Investigators still hear breathing inside the walls.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="prison" onclick="location.href='/stories/eastern-state-penitentiary'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">⛓</div><div class="card-thumb-fade"></div><span class="card-type">Haunted Prison</span></div>
+    <div class="card-body"><div class="card-loc">📍 Philadelphia, Pennsylvania</div><div class="card-title">Cellblock 12: The Ghost That Al Capone Feared More Than Any Rival</div><div class="card-excerpt">Capone requested a transfer after hearing screaming from an empty cell. He spent his days painting, whispering "Jimmy" to someone only he could see.</div><div class="card-foot"><span>7 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+  </div>
+
+  <div class="card" data-type="underground" onclick="location.href='/stories/seattle-underground'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏚</div><div class="card-thumb-fade"></div><span class="card-type">Underground</span></div>
+    <div class="card-body"><div class="card-loc">📍 Seattle, Washington</div><div class="card-title">The Tunnel Under Pioneer Square Locals Won't Enter After Dark</div><div class="card-excerpt">After the Great Fire of 1889, Seattle built a new city on top of the old one. Workers report footsteps in the sealed tunnels. Cameras malfunction.</div><div class="card-foot"><span>8 min read</span><span class="card-scare">☠☠☠☠☆</span></div></div>
+  </div>
+
+  <div class="card" data-type="plantation" onclick="location.href='/stories/myrtles-plantation'">
+    <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🌿</div><div class="card-thumb-fade"></div><span class="card-type">Historic Plantation</span></div>
+    <div class="card-body"><div class="card-loc">📍 St. Francisville, Louisiana</div><div class="card-title">The Chloe Mirror: Why Every Owner Turns It to the Wall</div><div class="card-excerpt">A slave girl poisoned the family. The mirror in the parlor was never covered after the deaths. Guests photograph handprints forming on the inside of the glass.</div><div class="card-foot"><span>8 min read</span><span class="card-scare">☠☠☠☠☆</span></div></div>
+  </div>
+
+</div>
+<div class="submit-band">
+  <h2>Know a Haunted Place?</h2>
+  <p>Every story here was submitted by someone who was there. If you have experienced something you cannot explain, we want to hear it.</p>
+  <a href="/submit" class="btn-primary">Submit Your Story</a>
+</div>
+<footer>
+  <a href="/" class="footer-logo">CreepyCoords</a>
+  <span class="footer-copy">2026 CreepyCoords. Real Places. Real Dread.</span>
+</footer>
+<script>
+  function filterCards(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(function(card){
+      card.style.display = (type === 'all' || card.dataset.type === type) ? 'flex' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

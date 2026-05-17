@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreepyCoords — Haunted Places Near You</title>
+<meta name="description" content="Explore verified haunted locations, creepy coordinates, and local legends — mapped and documented. Real places. Real dread.">
+<meta name="keywords" content="haunted places, creepy locations, ghost stories, haunted map, scary places near me, urban legends, paranormal">
+<link rel="canonical" href="https://creepycoords.com/">
+<meta property="og:title" content="CreepyCoords — The World's Most Haunted Places, Mapped">
+<meta property="og:description" content="Explore verified haunted locations and local legends — one pin at a time.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --blood: #8B0000; --blood-light: #B22222; --fog: #0e0e1a; --text: #e4e4e8; --muted: #777; --border: rgba(255,255,255,0.07); --border-red: rgba(139,0,0,0.35); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--fog); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 1px solid var(--border-red); background: rgba(8,8,16,0.92); position: sticky; top: 0; z-index: 200; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Creepster', cursive; font-size: 1.7rem; color: var(--blood-light); letter-spacing: 3px; text-shadow: 0 0 24px rgba(139,0,0,0.45); animation: flicker 9s infinite; }
+  .logo span { color: #ddd; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); font-family: 'Special Elite', serif; font-size: 0.85rem; letter-spacing: 1.5px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blood-light); }
+  .nav-cta { background: var(--blood) !important; color: #fff !important; padding: 8px 20px; border: 1px solid var(--blood-light); border-radius: 3px; }
+  .nav-cta:hover { background: var(--blood-light) !important; }
+  .hero { position: relative; padding: 96px 40px 80px; text-align: center; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% -10%, rgba(139,0,0,0.18) 0%, transparent 65%); pointer-events: none; }
+  .hero-eyebrow { display: inline-block; font-family: 'Special Elite', serif; font-size: 0.72rem; letter-spacing: 4px; color: var(--blood-light); border: 1px solid var(--border-red); padding: 6px 18px; border-radius: 2px; margin-bottom: 32px; text-transform: uppercase; }
+  .hero h1 { font-family: 'Creepster', cursive; font-size: clamp(3rem, 8vw, 6rem); line-height: 1.02; color: #fff; text-shadow: 0 0 60px rgba(139,0,0,0.35); margin-bottom: 24px; letter-spacing: 3px; }
+  .hero h1 em { color: var(--blood-light); font-style: normal; display: block; }
+  .hero-desc { font-family: 'Special Elite', serif; font-size: 1.05rem; color: var(--muted); max-width: 500px; margin: 0 auto 44px; line-height: 1.9; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--blood); color: #fff; border: 1px solid var(--blood-light); padding: 14px 34px; font-family: 'Special Elite', serif; font-size: 0.95rem; letter-spacing: 1.5px; cursor: pointer; border-radius: 3px; transition: all 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--blood-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(139,0,0,0.35); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.12); padding: 14px 34px; font-family: 'Special Elite', serif; font-size: 0.95rem; letter-spacing: 1.5px; cursor: pointer; border-radius: 3px; transition: all 0.2s; display: inline-block; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+  .stats { display: flex; justify-content: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.25); }
+  .stat { text-align: center; padding: 28px 48px; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Creepster', cursive; font-size: 2.2rem; color: var(--blood-light); letter-spacing: 2px; display: block; }
+  .stat-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; font-family: 'Special Elite', serif; margin-top: 2px; display: block; }
+  .section { padding: 72px 40px; max-width: 1120px; margin: 0 auto; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 12px; }
+  .section-title { font-family: 'Creepster', cursive; font-size: 2.1rem; color: #fff; letter-spacing: 2px; }
+  .section-title span { color: var(--blood-light); }
+  .section-link { font-family: 'Special Elite', serif; font-size: 0.8rem; color: var(--muted); letter-spacing: 1.5px; transition: color 0.2s; }
+  .section-link:hover { color: var(--blood-light); }
+  .map-wrap { border: 1px solid var(--border-red); border-radius: 6px; overflow: hidden; height: 500px; }
+  #map { width: 100%; height: 100%; }
+  .leaflet-container { background: #0d0d1a !important; font-family: 'Special Elite', serif; }
+  .leaflet-tile { filter: brightness(0.35) saturate(0.2) hue-rotate(190deg); }
+  .leaflet-control-zoom a { background: #13131f !important; color: var(--blood-light) !important; border-color: var(--border-red) !important; }
+  .leaflet-control-zoom a:hover { background: var(--blood) !important; color: #fff !important; }
+  .leaflet-control-attribution { background: rgba(0,0,0,0.5) !important; color: rgba(255,255,255,0.15) !important; font-size: 9px !important; }
+  .leaflet-control-attribution a { color: rgba(255,255,255,0.2) !important; }
+  .leaflet-popup-content-wrapper { background: #0a0a14 !important; border: 1px solid var(--border-red) !important; border-radius: 5px !important; box-shadow: 0 8px 32px rgba(0,0,0,0.8) !important; padding: 0 !important; }
+  .leaflet-popup-content { margin: 0 !important; width: 210px !important; }
+  .leaflet-popup-tip { background: #0a0a14 !important; }
+  .leaflet-popup-close-button { color: var(--muted) !important; top: 8px !important; right: 10px !important; }
+  .popup-inner { padding: 16px 18px; }
+  .popup-tag { font-family: 'Special Elite', serif; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blood-light); margin-bottom: 6px; display: block; }
+  .popup-title { font-family: 'Special Elite', serif; font-size: 0.88rem; color: #fff; margin-bottom: 4px; line-height: 1.4; }
+  .popup-loc { font-size: 0.7rem; color: var(--muted); margin-bottom: 8px; font-family: 'Special Elite', serif; }
+  .popup-scare { font-size: 0.7rem; color: var(--blood-light); margin-bottom: 12px; display: block; }
+  .popup-btn { display: block; background: var(--blood); color: #fff; text-align: center; padding: 8px; font-family: 'Special Elite', serif; font-size: 0.75rem; letter-spacing: 1px; border-radius: 3px; transition: background 0.2s; }
+  .popup-btn:hover { background: var(--blood-light); }
+  .popup-btn.coming-soon { background: rgba(255,255,255,0.06); color: var(--muted); cursor: default; border: 1px solid rgba(255,255,255,0.1); letter-spacing: 2px; font-size: 0.68rem; }
+  .popup-btn.coming-soon:hover { background: rgba(255,255,255,0.06); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+  .card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: all 0.25s; cursor: pointer; display: flex; flex-direction: column; }
+  .card:hover { border-color: var(--border-red); background: rgba(139,0,0,0.06); transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+  .card-thumb { height: 168px; background: #08080f; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .card-thumb-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(139,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,0,0,0.04) 1px, transparent 1px); background-size: 22px 22px; }
+  .card-thumb-icon { font-size: 3.2rem; z-index: 1; position: relative; }
+  .card-thumb-fade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%); }
+  .card-type { position: absolute; top: 12px; left: 12px; background: rgba(139,0,0,0.85); color: #fff; font-size: 0.65rem; padding: 3px 10px; border-radius: 2px; font-family: 'Special Elite', serif; letter-spacing: 1.5px; text-transform: uppercase; z-index: 2; }
+  .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+  .card-loc { font-size: 0.7rem; color: var(--blood-light); font-family: 'Special Elite', serif; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .card-title { font-family: 'Special Elite', serif; font-size: 1rem; color: #fff; margin-bottom: 10px; line-height: 1.45; flex: 1; }
+  .card-excerpt { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+  .card-foot { display: flex; align-items: center; justify-content: space-between; font-size: 0.7rem; color: rgba(255,255,255,0.2); font-family: 'Special Elite', serif; border-top: 1px solid var(--border); padding-top: 12px; }
+  .card-scare { color: var(--blood-light); }
+  .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .cat { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 5px; padding: 22px 20px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 14px; }
+  .cat:hover { border-color: var(--border-red); background: rgba(139,0,0,0.06); transform: translateX(4px); }
+  .cat-icon { font-size: 1.8rem; }
+  .cat-name { font-family: 'Special Elite', serif; font-size: 0.9rem; color: #fff; letter-spacing: 1px; display: block; }
+  .cat-count { font-size: 0.72rem; color: var(--muted); letter-spacing: 1px; margin-top: 2px; display: block; }
+  .email-band { background: rgba(139,0,0,0.07); border-top: 1px solid var(--border-red); border-bottom: 1px solid var(--border-red); padding: 72px 40px; text-align: center; }
+  .email-band h2 { font-family: 'Creepster', cursive; font-size: 2.4rem; color: #fff; letter-spacing: 3px; margin-bottom: 14px; }
+  .email-band p { font-family: 'Special Elite', serif; color: var(--muted); font-size: 0.92rem; max-width: 480px; margin: 0 auto 32px; line-height: 1.85; }
+  .email-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .email-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 13px 20px; font-family: 'Special Elite', serif; font-size: 0.9rem; border-radius: 3px; width: 270px; outline: none; transition: border-color 0.2s; }
+  .email-input:focus { border-color: rgba(139,0,0,0.6); }
+  .email-input::placeholder { color: rgba(255,255,255,0.2); }
+  .email-fine { margin-top: 14px; font-size: 0.7rem; color: rgba(255,255,255,0.18); font-family: 'Special Elite', serif; letter-spacing: 1.5px; }
+  .email-msg { display: none; margin-top: 14px; font-family: 'Special Elite', serif; font-size: 0.85rem; color: #4caf50; }
+  .submit-band { max-width: 700px; margin: 0 auto; padding: 72px 40px; text-align: center; }
+  .submit-band h2 { font-family: 'Creepster', cursive; font-size: 2rem; color: #fff; letter-spacing: 2px; margin-bottom: 12px; }
+  .submit-band p { font-family: 'Special Elite', serif; color: var(--muted); font-size: 0.88rem; line-height: 1.8; margin-bottom: 28px; }
+  footer { border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Creepster', cursive; font-size: 1.4rem; color: rgba(139,0,0,0.5); letter-spacing: 2px; }
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+  .footer-links a { font-family: 'Special Elite', serif; font-size: 0.75rem; color: rgba(255,255,255,0.2); letter-spacing: 1px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--muted); }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.12); font-family: 'Special Elite', serif; letter-spacing: 1px; }
+  @keyframes flicker { 0%,89%,91%,95%,100% { opacity: 1; } 90% { opacity: 0.35; } 93% { opacity: 0.7; } 94% { opacity: 0.4; } }
+  @media (max-width: 768px) { nav { padding: 14px 20px; } .nav-links { gap: 16px; } .nav-links li:not(:last-child) { display: none; } .hero { padding: 64px 20px 56px; } .stats { flex-wrap: wrap; } .stat { padding: 20px 28px; } .section { padding: 52px 20px; } .email-band { padding: 52px 20px; } .map-wrap { height: 360px; } footer { padding: 24px 20px; flex-direction: column; text-align: center; } .footer-links { justify-content: center; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Creepy<span>Coords</span></a>
+  <ul class="nav-links">
+    <li><a href="#map">Map</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="/submit">Submit</a></li>
+    <li><a href="#map" class="nav-cta">📍 Explore Near Me</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <div class="hero-eyebrow">🕯 Real Places. Real Dread.</div>
+  <h1>The World's Most<em>Haunted</em>Places, Mapped.</h1>
+  <p class="hero-desc">Explore verified haunted locations, creepy coordinates, and local legends — one pin at a time.</p>
+  <div class="hero-actions">
+    <a href="#map" class="btn-primary">🗺 Explore the Map</a>
+    <a href="#stories" class="btn-ghost">Read Latest Stories →</a>
+  </div>
+</section>
+<div class="stats">
+  <div class="stat"><span class="stat-num">612</span><span class="stat-label">Mapped Locations</span></div>
+  <div class="stat"><span class="stat-num">50</span><span class="stat-label">US States</span></div>
+  <div class="stat"><span class="stat-num">38</span><span class="stat-label">Countries</span></div>
+  <div class="stat"><span class="stat-num">☠☠☠☠☠</span><span class="stat-label">Verified & Documented</span></div>
+</div>
+<section class="section" id="map">
+  <div class="section-header">
+    <h2 class="section-title">Haunted <span>Near You</span></h2>
+    <span class="section-link">Click pins to read stories →</span>
+  </div>
+  <div class="map-wrap"><div id="map"></div></div>
+</section>
+<section class="section" id="stories">
+  <div class="section-header">
+    <h2 class="section-title">Latest <span>Stories</span></h2>
+    <a href="/stories" class="section-link">View All →</a>
+  </div>
+  <div class="cards">
+    <div class="card" onclick="location.href='/stories/gonjiam'">
+      <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏥</div><div class="card-thumb-fade"></div><span class="card-type">Abandoned Hospital</span></div>
+      <div class="card-body"><div class="card-loc">📍 South Korea</div><div class="card-title">Gonjiam: The Asylum That Broke Korea's Bravest Ghost Hunters</div><div class="card-excerpt">CNN called it one of the 7 freakiest places on Earth. The owner fled overnight. Room 207 is where visitors stop going further.</div><div class="card-foot"><span>13 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/aokigahara'">
+      <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🌲</div><div class="card-thumb-fade"></div><span class="card-type">Haunted Forest</span></div>
+      <div class="card-body"><div class="card-loc">📍 Mt. Fuji, Japan</div><div class="card-title">Aokigahara: The Forest That Swallows People Whole</div><div class="card-excerpt">Compasses stop working inside it. The government stopped publishing the death count because publishing it made the numbers worse.</div><div class="card-foot"><span>12 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/villisca-axe-murder-house'">
+      <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🪓</div><div class="card-thumb-fade"></div><span class="card-type">True Crime</span></div>
+      <div class="card-body"><div class="card-loc">📍 Villisca, Iowa</div><div class="card-title">Villisca Axe Murder House: Eight Dead, No Answers, 110 Years Later</div><div class="card-excerpt">Eight people killed in their sleep in 1912. The killer covered every mirror. The case is still open. Visitors still hear children crying at 3am.</div><div class="card-foot"><span>12 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/korean-elevator-game'">
+      <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🛗</div><div class="card-thumb-fade"></div><span class="card-type">Korean Legend</span></div>
+      <div class="card-body"><div class="card-loc">📍 South Korea</div><div class="card-title">The Elevator Game: 10 Floors, Wrong World, No Way Back</div><div class="card-excerpt">Press the floors in the exact order. A woman will board on the 5th floor. Do not look at her. If the elevator goes up instead of down — you've crossed over.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/stanley-hotel'">
+      <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏨</div><div class="card-thumb-fade"></div><span class="card-type">Hotel</span></div>
+      <div class="card-body"><div class="card-loc">📍 Estes Park, CO</div><div class="card-title">Room 217: The Night Stephen King Checked In and Never Really Left</div><div class="card-excerpt">He woke at 3am to the sound of a child laughing in the corridor. No children were on the floor. The Shining was born that night.</div><div class="card-foot"><span>9 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/waverly-hills'">
+      <div class="card-thumb"><div class="card-thumb-grid"></div><div class="card-thumb-icon">🏥</div><div class="card-thumb-fade"></div><span class="card-type">Hospital</span></div>
+      <div class="card-body"><div class="card-loc">📍 Louisville, KY</div><div class="card-title">The Body Chute: 63,000 Patients Died Here. Some Never Left.</div><div class="card-excerpt">Staff built a 500-foot underground tunnel to remove bodies without surviving patients seeing the death toll. Investigators still hear breathing inside.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">☠☠☠☠☠</span></div></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="categories" style="padding-top:0;">
+  <div class="section-header"><h2 class="section-title">Browse by <span>Category</span></h2></div>
+  <div class="cats">
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">🏚</span><div><span class="cat-name">Abandoned</span><span class="cat-count">143 locations</span></div></div>
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">🏨</span><div><span class="cat-name">Hotels</span><span class="cat-count">67 locations</span></div></div>
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">⛓</span><div><span class="cat-name">Prisons</span><span class="cat-count">38 locations</span></div></div>
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">🏥</span><div><span class="cat-name">Hospitals</span><span class="cat-count">54 locations</span></div></div>
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">🛣</span><div><span class="cat-name">Roads & Highways</span><span class="cat-count">89 locations</span></div></div>
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">⛩</span><div><span class="cat-name">Asian Legends</span><span class="cat-count">71 locations</span></div></div>
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">⛪</span><div><span class="cat-name">Churches</span><span class="cat-count">42 locations</span></div></div>
+    <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">🌲</span><div><span class="cat-name">Forests & Woods</span><span class="cat-count">78 locations</span></div></div>
+  </div>
+</section>
+<div class="email-band" id="newsletter">
+  <h2>Every Friday at Midnight</h2>
+  <p>One haunted location. One verified story. Delivered to your inbox every Friday night — just when you should be sleeping.</p>
+  <div class="email-row">
+    <input type="email" class="email-input" id="emailInput" placeholder="your@email.com">
+    <button class="btn-primary" onclick="handleSubscribe()">Subscribe Free</button>
+  </div>
+  <div class="email-msg" id="emailMsg">You are in. Check your inbox Friday night.</div>
+  <p class="email-fine">No spam. Unsubscribe anytime. We write in the dark.</p>
+</div>
+<section class="submit-band">
+  <h2>Know a Haunted Place?</h2>
+  <p>Every story on this site was submitted by someone who was there. If you have experienced something you cannot explain, we want to hear it.</p>
+  <a href="/submit" class="btn-primary">Submit Your Story</a>
+</section>
+<footer>
+  <a href="/" class="footer-logo">CreepyCoords</a>
+  <ul class="footer-links">
+    <li><a href="/stories">Stories</a></li>
+    <li><a href="/submit">Submit</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+  </ul>
+  <span class="footer-copy">2026 CreepyCoords. Real Places. Real Dread.</span>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var map = L.map('map', { center: [30, 10], zoom: 2, zoomControl: true, scrollWheelZoom: false });
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'OpenStreetMap contributors', maxZoom: 18 }).addTo(map);
+var pinIcon = L.divIcon({ className: '', html: '<div style="width:12px;height:12px;background:#B22222;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid rgba(255,255,255,0.8);box-shadow:0 0 8px rgba(178,34,34,0.8);"></div>', iconSize: [12,12], iconAnchor: [6,12], popupAnchor: [0,-14] });
+
+// url이 있으면 Read the Story, null이면 Coming Soon
+var locations = [
+  {lat:47.6062,lng:-122.3321,name:'Seattle Underground',loc:'Seattle, WA',type:'Underground',scare:'SSSS',url:'/stories/seattle-underground'},
+  {lat:40.3978,lng:-105.5214,name:'The Stanley Hotel',loc:'Estes Park, CO',type:'Hotel',scare:'SSSSS',url:'/stories/stanley-hotel'},
+  {lat:39.9682,lng:-75.1727,name:'Eastern State Penitentiary',loc:'Philadelphia, PA',type:'Prison',scare:'SSSSS',url:'/stories/eastern-state-penitentiary'},
+  {lat:30.7855,lng:-91.3760,name:'The Myrtles Plantation',loc:'Louisiana',type:'Plantation',scare:'SSSS',url:'/stories/myrtles-plantation'},
+  {lat:38.1894,lng:-85.9052,name:'Waverly Hills Sanatorium',loc:'Louisville, KY',type:'Hospital',scare:'SSSSS',url:'/stories/waverly-hills'},
+  {lat:37.3382,lng:-121.8863,name:'Winchester Mystery House',loc:'San Jose, CA',type:'Mansion',scare:'SSS',url:null},
+  {lat:29.9511,lng:-90.0715,name:'LaLaurie Mansion',loc:'New Orleans, LA',type:'Mansion',scare:'SSSSS',url:'/stories/lalaurie-mansion'},
+  {lat:41.8827,lng:-87.6233,name:'Bachelors Grove Cemetery',loc:'Chicago, IL',type:'Cemetery',scare:'SSSS',url:null},
+  {lat:41.7004,lng:-71.1554,name:'Lizzie Borden House',loc:'Fall River, MA',type:'Historic Home',scare:'SSSS',url:null},
+  {lat:34.0522,lng:-118.2437,name:'The Cecil Hotel',loc:'Los Angeles, CA',type:'Hotel',scare:'SSSSS',url:'/stories/cecil-hotel'},
+  {lat:29.4241,lng:-98.4936,name:'The Menger Hotel',loc:'San Antonio, TX',type:'Hotel',scare:'SSSS',url:null},
+  {lat:30.3322,lng:-81.6557,name:'St. Augustine Lighthouse',loc:'St. Augustine, FL',type:'Lighthouse',scare:'SSSS',url:null},
+  {lat:39.1031,lng:-84.5120,name:'Bobby Mackeys Music World',loc:'Wilder, KY',type:'Nightclub',scare:'SSSSS',url:null},
+  {lat:41.2565,lng:-95.9345,name:'Villisca Axe Murder House',loc:'Iowa',type:'Historic Home',scare:'SSSSS',url:'/stories/villisca-axe-murder-house'},
+  {lat:44.9778,lng:-93.2650,name:'Wabasha Street Caves',loc:'St. Paul, MN',type:'Underground',scare:'SSSS',url:null},
+  {lat:39.7392,lng:-104.9903,name:'Molly Brown House',loc:'Denver, CO',type:'Historic Home',scare:'SSS',url:null},
+  {lat:42.3601,lng:-71.0589,name:'Omni Parker House',loc:'Boston, MA',type:'Hotel',scare:'SSS',url:null},
+  {lat:37.7749,lng:-122.4194,name:'Queen Anne Hotel',loc:'San Francisco, CA',type:'Hotel',scare:'SSS',url:null},
+  {lat:36.1627,lng:-86.7816,name:'Carnton Plantation',loc:'Franklin, TN',type:'Plantation',scare:'SSSS',url:null},
+  {lat:38.9072,lng:-77.0369,name:'Octagon House',loc:'Washington DC',type:'Historic Home',scare:'SSS',url:null},
+  {lat:33.7490,lng:-84.3880,name:'Oakland Cemetery',loc:'Atlanta, GA',type:'Cemetery',scare:'SSS',url:null},
+  {lat:32.3182,lng:-86.9023,name:'Sloss Furnaces',loc:'Birmingham, AL',type:'Industrial',scare:'SSSS',url:null},
+  {lat:35.1495,lng:-90.0490,name:'Woodruff-Fontaine House',loc:'Memphis, TN',type:'Historic Home',scare:'SSSS',url:null},
+  {lat:37.5407,lng:-77.4360,name:'The Jefferson Hotel',loc:'Richmond, VA',type:'Hotel',scare:'SSS',url:null},
+  {lat:33.4484,lng:-112.0740,name:'Hotel San Carlos',loc:'Phoenix, AZ',type:'Hotel',scare:'SSS',url:null},
+  {lat:45.5051,lng:-122.6750,name:'White Eagle Saloon',loc:'Portland, OR',type:'Bar',scare:'SSS',url:null},
+  {lat:36.8508,lng:-75.9779,name:'Ferry Plantation House',loc:'Virginia Beach, VA',type:'Plantation',scare:'SSS',url:null},
+  {lat:48.8566,lng:2.3522,name:'Catacombs of Paris',loc:'Paris, France',type:'Underground',scare:'SSSSS',url:'/stories/catacombs-paris'},
+  {lat:51.5074,lng:-0.1278,name:'The Tower of London',loc:'London, UK',type:'Castle',scare:'SSSSS',url:null},
+  {lat:55.9533,lng:-3.1883,name:'Marys Kings Close',loc:'Edinburgh, Scotland',type:'Underground',scare:'SSSS',url:null},
+  {lat:51.1787,lng:-1.8262,name:'Stonehenge',loc:'Wiltshire, UK',type:'Ancient Site',scare:'SSS',url:null},
+  {lat:53.3498,lng:-6.2603,name:'Kilmainham Gaol',loc:'Dublin, Ireland',type:'Prison',scare:'SSSS',url:null},
+  {lat:48.2082,lng:16.3738,name:'Vienna Catacombs',loc:'Vienna, Austria',type:'Underground',scare:'SSSS',url:null},
+  {lat:41.9028,lng:12.4964,name:'Capuchin Crypt',loc:'Rome, Italy',type:'Crypt',scare:'SSSSS',url:null},
+  {lat:50.0880,lng:14.4208,name:'Sedlec Ossuary',loc:'Czech Republic',type:'Church',scare:'SSSSS',url:null},
+  {lat:35.6762,lng:139.6503,name:'Aokigahara Forest',loc:'Japan',type:'Forest',scare:'SSSSS',url:'/stories/aokigahara'},
+  {lat:22.3193,lng:114.1694,name:'Suicide Cliff',loc:'Hong Kong',type:'Cliff',scare:'SSSS',url:null},
+  {lat:13.7563,lng:100.5018,name:'Bang Kwang Prison',loc:'Bangkok, Thailand',type:'Prison',scare:'SSSS',url:null},
+  {lat:1.3521,lng:103.8198,name:'Old Changi Hospital',loc:'Singapore',type:'Hospital',scare:'SSSSS',url:null},
+  {lat:-33.8688,lng:151.2093,name:'Q Station',loc:'Sydney, Australia',type:'Quarantine Station',scare:'SSSS',url:null},
+  {lat:19.4326,lng:-99.1332,name:'Island of the Dolls',loc:'Mexico City, Mexico',type:'Island',scare:'SSSSS',url:'/stories/island-of-the-dolls'},
+  {lat:-22.9068,lng:-43.1729,name:'Tunnel do Leme',loc:'Rio de Janeiro, Brazil',type:'Tunnel',scare:'SSS',url:null},
+  {lat:37.4301,lng:127.2614,name:'Gonjiam Psychiatric Hospital',loc:'Gwangju, Gyeonggi',type:'Abandoned Hospital',scare:'SSSSS',url:'/stories/gonjiam'},
+  {lat:37.0547,lng:128.1868,name:'Neulbom Garden',loc:'Jecheon, Chungbuk',type:'Abandoned Restaurant',scare:'SSSS',url:null},
+  {lat:37.5665,lng:126.9330,name:'Seodaemun Prison',loc:'Seoul, South Korea',type:'Prison',scare:'SSSS',url:null},
+  {lat:37.6047,lng:127.0940,name:'Yongma Land',loc:'Seoul, South Korea',type:'Abandoned Amusement Park',scare:'SSSS',url:null},
+  {lat:35.8722,lng:128.6025,name:'Gyeongsan Cobalt Mine',loc:'Gyeongsan, Gyeongbuk',type:'Abandoned Mine',scare:'SSSSS',url:null},
+  {lat:36.5951,lng:129.3632,name:'Yeongdeok Haunted House',loc:'Yeongdeok, Gyeongbuk',type:'Abandoned Building',scare:'SSSSS',url:null},
+  {lat:37.8813,lng:127.7298,name:'Chuncheon Jade Villa',loc:'Chuncheon, Gangwon',type:'Abandoned Villa',scare:'SSSS',url:null},
+  {lat:33.4996,lng:126.5312,name:'Manjanggul Cave',loc:'Jeju Island',type:'Cave',scare:'SSS',url:null},
+  {lat:35.1796,lng:129.0756,name:'Busan Cinema Tunnel',loc:'Busan, South Korea',type:'Tunnel',scare:'SSS',url:null},
+  {lat:37.4563,lng:126.7052,name:'Incheon Wolmido Island',loc:'Incheon, South Korea',type:'Abandoned Site',scare:'SSS',url:null},
+  {lat:35.8242,lng:127.1480,name:'Jeonju Ghost Road',loc:'Jeonju, Jeonbuk',type:'Historic District',scare:'SSS',url:null},
+  {lat:37.5140,lng:127.0270,name:'Bongeunsa Temple',loc:'Gangnam, Seoul',type:'Temple',scare:'SSS',url:null},
+  {lat:36.3504,lng:127.3845,name:'Daejeon Abandoned Villa',loc:'Daejeon, South Korea',type:'Abandoned Villa',scare:'SSSS',url:null},
+  {lat:35.5384,lng:129.3114,name:'Ulsan Abandoned Factory',loc:'Ulsan, South Korea',type:'Abandoned Industrial',scare:'SSS',url:null}
+];
+
+locations.forEach(function(loc) {
+  var scare = loc.scare.split('').map(function(s){ return s === 'S' ? '☠' : '☆'; }).join('');
+  var btn = loc.url
+    ? '<a href="'+loc.url+'" class="popup-btn">Read the Story →</a>'
+    : '<span class="popup-btn coming-soon">🕯 Coming Soon</span>';
+  L.marker([loc.lat,loc.lng],{icon:pinIcon}).addTo(map).bindPopup(
+    '<div class="popup-inner"><span class="popup-tag">'+loc.type+'</span><div class="popup-title">'+loc.name+'</div><div class="popup-loc">📍 '+loc.loc+'</div><span class="popup-scare">'+scare+'</span>'+btn+'</div>',
+    {maxWidth:220}
+  );
+});
+
+function handleSubscribe(){
+  var input=document.getElementById('emailInput');
+  var msg=document.getElementById('emailMsg');
+  if(!input.value||!input.value.includes('@')){input.style.borderColor='rgba(139,0,0,0.7)';input.focus();return;}
+  input.style.display='none';
+  document.querySelector('.email-row button').style.display='none';
+  msg.style.display='block';
+}
+</script>
+</body>
+</html>

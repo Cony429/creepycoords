@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Korean Elevator Game: 10 Floors, Wrong World, No Way Back | CreepyCoords</title>
+<meta name="description" content="The Korean Elevator Game is a ritual said to transport you to another world. Press the floors in the exact order. A woman will board on the 5th floor. Do not look at her.">
+<meta name="keywords" content="korean elevator game, elevator ritual, korean urban legend, haunted elevator, creepy ritual, paranormal">
+<link rel="canonical" href="https://creepycoords.com/stories/korean-elevator-game">
+<meta property="og:title" content="The Korean Elevator Game: 10 Floors, Wrong World, No Way Back">
+<meta property="og:description" content="A ritual said to transport you to another world. Press the floors in exact order. A woman will board. Do not look at her.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blood: #8B0000;
+    --blood-light: #B22222;
+    --fog: #0e0e1a;
+    --fog2: #13131f;
+    --text: #e4e4e8;
+    --muted: #777;
+    --border: rgba(255,255,255,0.07);
+    --border-red: rgba(139,0,0,0.35);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--fog); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    border-bottom: 1px solid var(--border-red);
+    background: rgba(8,8,16,0.92);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    backdrop-filter: blur(10px);
+  }
+
+  .logo {
+    font-family: 'Creepster', cursive;
+    font-size: 1.7rem;
+    color: var(--blood-light);
+    letter-spacing: 3px;
+    text-shadow: 0 0 24px rgba(139,0,0,0.45);
+    animation: flicker 9s infinite;
+  }
+
+  .logo span { color: #ddd; }
+
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); font-family: 'Special Elite', serif; font-size: 0.85rem; letter-spacing: 1.5px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blood-light); }
+
+  /* HERO */
+  .story-hero {
+    position: relative;
+    padding: 72px 40px 56px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    font-family: 'Special Elite', serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .breadcrumb a { color: var(--blood-light); transition: color 0.2s; }
+  .breadcrumb a:hover { color: #fff; }
+  .breadcrumb span { color: rgba(255,255,255,0.2); }
+
+  .story-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-family: 'Special Elite', serif;
+    font-size: 0.65rem;
+    padding: 3px 12px;
+    border-radius: 2px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .tag-type { background: rgba(139,0,0,0.3); color: var(--blood-light); border: 1px solid var(--border-red); }
+  .tag-origin { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+
+  .story-title {
+    font-family: 'Creepster', cursive;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    line-height: 1.08;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(139,0,0,0.3);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .story-title em { color: var(--blood-light); font-style: normal; }
+
+  .story-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'Special Elite', serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .meta-scare { color: var(--blood-light); }
+
+  /* CONTENT */
+  .story-body {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .story-body p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #c8c8cc;
+    margin-bottom: 28px;
+    font-family: 'Special Elite', serif;
+  }
+
+  .story-body h2 {
+    font-family: 'Creepster', cursive;
+    font-size: 1.8rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin: 48px 0 20px;
+  }
+
+  .story-body h2 span { color: var(--blood-light); }
+
+  .story-body h3 {
+    font-family: 'Special Elite', serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+    margin: 32px 0 14px;
+    border-left: 3px solid var(--blood);
+    padding-left: 14px;
+  }
+
+  /* RITUAL BOX */
+  .ritual-box {
+    background: rgba(139,0,0,0.08);
+    border: 1px solid var(--border-red);
+    border-radius: 6px;
+    padding: 32px 36px;
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .ritual-box::before {
+    content: '⚠ RITUAL INSTRUCTIONS';
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--blood);
+    color: #fff;
+    font-family: 'Special Elite', serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    padding: 3px 12px;
+    border-radius: 2px;
+  }
+
+  .ritual-box p {
+    font-size: 0.95rem !important;
+    color: #bbb !important;
+    margin-bottom: 0 !important;
+  }
+
+  .ritual-steps {
+    list-style: none;
+    counter-reset: steps;
+    margin: 16px 0 0;
+  }
+
+  .ritual-steps li {
+    counter-increment: steps;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-family: 'Special Elite', serif;
+    font-size: 0.92rem;
+    color: #bbb;
+    line-height: 1.6;
+  }
+
+  .ritual-steps li:last-child { border-bottom: none; }
+
+  .ritual-steps li::before {
+    content: counter(steps);
+    min-width: 28px;
+    height: 28px;
+    background: var(--blood);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ritual-steps li.warning {
+    color: #e8c070;
+    background: rgba(232,192,112,0.05);
+    padding: 10px 12px;
+    border-radius: 4px;
+    border-bottom: none;
+    margin-top: 8px;
+  }
+
+  .ritual-steps li.warning::before {
+    content: '!';
+    background: #8B6914;
+  }
+
+  /* QUOTE */
+  .story-quote {
+    border-left: 3px solid var(--blood-light);
+    padding: 20px 28px;
+    margin: 36px 0;
+    background: rgba(255,255,255,0.02);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .story-quote p {
+    font-size: 1.1rem !important;
+    color: rgba(255,255,255,0.7) !important;
+    font-style: italic;
+    margin-bottom: 8px !important;
+  }
+
+  .story-quote cite {
+    font-family: 'Special Elite', serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* FLOOR DIAGRAM */
+  .floor-diagram {
+    background: #08080f;
+    border: 1px solid var(--border-red);
+    border-radius: 6px;
+    padding: 28px;
+    margin: 36px 0;
+    font-family: 'Special Elite', serif;
+  }
+
+  .floor-diagram-title {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blood-light);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .floor-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .floor-row:last-child { border-bottom: none; }
+
+  .floor-num {
+    width: 36px;
+    height: 36px;
+    background: rgba(139,0,0,0.2);
+    border: 1px solid var(--border-red);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--blood-light);
+    flex-shrink: 0;
+  }
+
+  .floor-num.active {
+    background: var(--blood);
+    border-color: var(--blood-light);
+    color: #fff;
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .floor-desc { font-size: 0.85rem; color: #bbb; line-height: 1.5; }
+  .floor-desc strong { color: #fff; }
+  .floor-desc.danger { color: #e8a070; }
+
+  /* WARNING BOX */
+  .warning-box {
+    background: rgba(232,192,112,0.06);
+    border: 1px solid rgba(232,192,112,0.25);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 36px 0;
+    font-family: 'Special Elite', serif;
+    font-size: 0.88rem;
+    color: #c8a860;
+    line-height: 1.7;
+  }
+
+  .warning-box strong { color: #e8c070; display: block; margin-bottom: 6px; letter-spacing: 1px; }
+
+  /* RELATED */
+  .related {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .related h2 {
+    font-family: 'Creepster', cursive;
+    font-size: 1.8rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+
+  .related h2 span { color: var(--blood-light); }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .related-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .related-card:hover {
+    border-color: var(--border-red);
+    background: rgba(139,0,0,0.06);
+    transform: translateY(-3px);
+  }
+
+  .related-card-loc { font-size: 0.7rem; color: var(--blood-light); font-family: 'Special Elite', serif; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .related-card-title { font-family: 'Special Elite', serif; font-size: 0.92rem; color: #fff; line-height: 1.4; margin-bottom: 10px; }
+  .related-card-foot { font-size: 0.7rem; color: rgba(255,255,255,0.2); font-family: 'Special Elite', serif; display: flex; justify-content: space-between; }
+  .related-card-scare { color: var(--blood-light); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo { font-family: 'Creepster', cursive; font-size: 1.3rem; color: rgba(139,0,0,0.5); letter-spacing: 2px; }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.12); font-family: 'Special Elite', serif; letter-spacing: 1px; }
+
+  @keyframes flicker {
+    0%,89%,91%,95%,100% { opacity: 1; }
+    90% { opacity: 0.35; }
+    93% { opacity: 0.7; }
+    94% { opacity: 0.4; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .story-hero { padding: 48px 20px 36px; }
+    .story-body { padding: 0 20px 56px; }
+    .related { padding: 0 20px 56px; }
+    footer { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Creepy<span>Coords</span></a>
+  <ul class="nav-links">
+    <li><a href="/#map">Map</a></li>
+    <li><a href="/#stories">Stories</a></li>
+    <li><a href="/#categories">Categories</a></li>
+  </ul>
+</nav>
+
+<article>
+
+  <header class="story-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/#stories">Stories</a>
+      <span>/</span>
+      Korean Legends
+    </div>
+
+    <div class="story-tags">
+      <span class="tag tag-type">Korean Legend</span>
+      <span class="tag tag-origin">⛩ South Korea</span>
+      <span class="tag tag-origin">Ritual</span>
+      <span class="tag tag-origin">Verified Accounts</span>
+    </div>
+
+    <h1 class="story-title">
+      The Korean Elevator Game:<br>
+      <em>10 Floors, Wrong World,</em><br>
+      No Way Back
+    </h1>
+
+    <div class="story-meta">
+      <span>📍 South Korea</span>
+      <span>🕐 10 min read</span>
+      <span class="meta-scare">☠ Scare level: ☠☠☠☠☠</span>
+      <span>Updated May 2026</span>
+    </div>
+  </header>
+
+  <div class="story-body">
+
+    <p>Somewhere in South Korea, in an apartment building you'd never notice from the street, someone pressed a series of elevator buttons in a specific order — and never came back the same way.</p>
+
+    <p>The Korean Elevator Game, known online as <strong style="color:#fff;">엘리베이터로 다른 세계에 가는 법</strong> ("How to travel to another world via elevator"), is one of the most widely documented paranormal rituals to emerge from East Asia. Unlike Western ghost stories rooted in specific haunted locations, this ritual can theoretically be performed in <em>any</em> building with at least 10 floors.</p>
+
+    <p>That's what makes it different. That's what makes it terrifying.</p>
+
+    <h2>The <span>Origin</span></h2>
+
+    <p>The ritual first surfaced on Korean internet forums in the early 2000s, spreading through horror communities like 네이버 카페 and DC Inside — the Korean equivalent of Reddit. By 2010, English-language paranormal sites had picked it up, and by 2015 it had spread to YouTube, Reddit's r/NoSleep, and TikTok.</p>
+
+    <p>Researchers who study internet folklore trace the ritual to older Korean shamanist beliefs around liminal spaces — thresholds between worlds. Elevators, moving between floors in a sealed metal box, have long carried an eerie quality in Korean urban culture. The specific sequence of floors is said to mirror the structure of a Korean shamanic ritual called a <em>gut</em>, designed to open a passage to the spirit world.</p>
+
+    <div class="story-quote">
+      <p>"I pressed the buttons exactly as instructed. When the doors opened on the 10th floor, the building outside looked identical — same hallway, same walls. But the lights were slightly different. Yellower. And there was no sound at all."</p>
+      <cite>— Anonymous account, r/Paranormal, 2019</cite>
+    </div>
+
+    <h2>The <span>Rules</span></h2>
+
+    <p>The ritual requires a residential or office building with at least 10 floors. You must enter the elevator alone. Once another person enters with you, the ritual cannot begin — or if already begun, it is broken.</p>
+
+    <div class="ritual-box">
+      <ol class="ritual-steps">
+        <li>Enter the elevator <strong>alone</strong>. No other people may be present.</li>
+        <li>Press <strong>floor 4</strong>. When you reach it, do not exit.</li>
+        <li>Press <strong>floor 2</strong>. When you reach it, do not exit.</li>
+        <li>Press <strong>floor 6</strong>. When you reach it, do not exit.</li>
+        <li>Press <strong>floor 2</strong> again. When you reach it, do not exit.</li>
+        <li>Press <strong>floor 10</strong>. When you reach it, do not exit.</li>
+        <li>Press <strong>floor 5</strong>. The doors will open. <strong style="color:#e8a070;">A woman will enter.</strong></li>
+        <li class="warning">Do NOT look at the woman. Do NOT speak to her. Do NOT acknowledge her in any way.</li>
+        <li>Press <strong>floor 1</strong>. If the elevator goes UP instead of down — you have arrived.</li>
+        <li>Exit on floor 10. You are now in the other world.</li>
+      </ol>
+    </div>
+
+    <h2>The <span>Floor Map</span></h2>
+
+    <div class="floor-diagram">
+      <div class="floor-diagram-title">Elevator sequence — press in exact order</div>
+      <div class="floor-row"><div class="floor-num">4</div><div class="floor-desc"><strong>First stop.</strong> Doors may open. Stay inside.</div></div>
+      <div class="floor-row"><div class="floor-num">2</div><div class="floor-desc"><strong>Second stop.</strong> Stay inside.</div></div>
+      <div class="floor-row"><div class="floor-num">6</div><div class="floor-desc"><strong>Third stop.</strong> Stay inside.</div></div>
+      <div class="floor-row"><div class="floor-num">2</div><div class="floor-desc"><strong>Fourth stop.</strong> Second visit to floor 2. Stay inside.</div></div>
+      <div class="floor-row"><div class="floor-num">10</div><div class="floor-desc"><strong>Fifth stop.</strong> Stay inside.</div></div>
+      <div class="floor-row"><div class="floor-num active">5</div><div class="floor-desc danger"><strong>The woman boards here.</strong> Do not look at her. Do not speak.</div></div>
+      <div class="floor-row"><div class="floor-num">1</div><div class="floor-desc danger"><strong>Critical moment.</strong> If elevator goes UP — you've crossed over.</div></div>
+      <div class="floor-row"><div class="floor-num">10</div><div class="floor-desc danger"><strong>Exit here.</strong> You are no longer in your world.</div></div>
+    </div>
+
+    <h2>The <span>Woman</span></h2>
+
+    <p>Every account of the ritual describes her consistently: a Korean woman, appearing to be in her 30s or 40s, standing silently in the corner of the elevator. She does not press any buttons. She does not speak. She faces forward.</p>
+
+    <p>Those who have looked at her — by accident or out of curiosity — describe what they saw differently. Some say her face was wrong in a way they couldn't articulate. Some say she had no face at all. Some say she looked completely normal, but when they reached their floor, they couldn't find their way home for hours.</p>
+
+    <div class="story-quote">
+      <p>"My friend did it with me watching from outside the building. I saw the elevator stop on the 5th floor. The doors opened. Nothing went in. But on the camera feed, you could see him step back against the wall like something had entered."</p>
+      <cite>— Account from Korean paranormal forum, translated 2021</cite>
+    </div>
+
+    <h3>What happens if you look at her</h3>
+
+    <p>Accounts vary. The most consistent outcome reported: the elevator stops functioning. The doors open onto an unfamiliar floor. The person finds themselves unable to locate the exit, wandering in a version of their building that looks identical but is subtly, deeply wrong.</p>
+
+    <p>In some accounts, the person is found later — sometimes hours, sometimes days later — in their building's lobby, with no memory of how they got there.</p>
+
+    <p>In a small number of accounts, they are not found at all.</p>
+
+    <h2>How to <span>Return</span></h2>
+
+    <p>If you successfully arrive in the other world and wish to return, you must not eat or drink anything while there. You must find the same elevator, and press the same sequence of floors in reverse order. If the woman is still in the elevator, the same rules apply: do not look, do not speak.</p>
+
+    <div class="warning-box">
+      <strong>⚠ Critical warning from documented accounts:</strong>
+      If you feel dizzy or disoriented while in the other world, sit down immediately and close your eyes. Several accounts report that people who kept moving while disoriented were unable to find the elevator again. One account from 2018 describes a man who spent what felt like three days searching before the elevator "found him."
+    </div>
+
+    <h2>The <span>Other World</span></h2>
+
+    <p>Those who claim to have successfully arrived describe a place that looks exactly like their city — same streets, same buildings, same layout. But there are no people. The sky is always dark. Electronics don't work. And somewhere in the distance, there is always a red cross, like the sign on a Korean pharmacy or hospital, glowing in the dark.</p>
+
+    <p>No one has ever explained the red cross. It appears in accounts from Seoul, Busan, and Incheon — and in accounts from people who attempted the ritual in Japan and the United States, having read about it online.</p>
+
+    <p>Whatever world the elevator opens into, it seems to be the same one.</p>
+
+    <h2>Has Anyone <span>Proven</span> It?</h2>
+
+    <p>In 2014, a group of Korean university students documented a live attempt on video. The footage showed the elevator stopping on the 5th floor with no one visibly entering — but one student reacted as if someone had, stepping to the side and pressing himself against the wall. The elevator then ascended to the 10th floor. The student exited, walked down the hallway, and was not seen again for four hours. He was found in the lobby of the building. He said he didn't remember anything after pressing the floor 1 button.</p>
+
+    <p>The video has been re-uploaded and taken down multiple times. A copy remains on a private Korean archive. We will not link to it here.</p>
+
+  </div>
+</article>
+
+<!-- RELATED STORIES -->
+<section class="related">
+  <h2>More <span>Stories</span></h2>
+  <div class="related-grid">
+    <div class="related-card" onclick="location.href='/stories/korean-bun-shin-sa-ba'">
+      <div class="related-card-loc">📍 South Korea</div>
+      <div class="related-card-title">Bun-Shin-Sa-Ba: The Korean Ouija That Won't Let You Leave</div>
+      <div class="related-card-foot"><span>8 min read</span><span class="related-card-scare">☠☠☠☠☠</span></div>
+    </div>
+    <div class="related-card" onclick="location.href='/stories/stanley-hotel'">
+      <div class="related-card-loc">📍 Colorado, USA</div>
+      <div class="related-card-title">Room 217: The Night Stephen King Checked In and Never Really Left</div>
+      <div class="related-card-foot"><span>9 min read</span><span class="related-card-scare">☠☠☠☠☠</span></div>
+    </div>
+    <div class="related-card" onclick="location.href='/stories/waverly-hills'">
+      <div class="related-card-loc">📍 Louisville, KY</div>
+      <div class="related-card-title">The Body Chute: 63,000 Patients Died Here. Some Never Left.</div>
+      <div class="related-card-foot"><span>11 min read</span><span class="related-card-scare">☠☠☠☠☠</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="/" class="footer-logo">CreepyCoords</a>
+  <span class="footer-copy">© 2026 CreepyCoords — Real Places. Real Dread.</span>
+</footer>
+
+</body>
+</html>
