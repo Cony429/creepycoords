@@ -10,6 +10,8 @@
 <meta property="og:title" content="CreepyCoords — The World's Most Haunted Places, Mapped">
 <meta property="og:description" content="Explore verified haunted locations and local legends — one pin at a time.">
 <meta property="og:type" content="website">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FG91VP2HX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-8FG91VP2HX");</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,6 +22,8 @@
   html { scroll-behavior: smooth; }
   body { background: var(--fog); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
   a { text-decoration: none; color: inherit; }
+
+  /* NAV */
   nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 1px solid var(--border-red); background: rgba(8,8,16,0.92); position: sticky; top: 0; z-index: 200; backdrop-filter: blur(10px); }
   .logo { font-family: 'Creepster', cursive; font-size: 1.7rem; color: var(--blood-light); letter-spacing: 3px; text-shadow: 0 0 24px rgba(139,0,0,0.45); animation: flicker 9s infinite; }
   .logo span { color: #ddd; }
@@ -28,6 +32,14 @@
   .nav-links a:hover { color: var(--blood-light); }
   .nav-cta { background: var(--blood) !important; color: #fff !important; padding: 8px 20px; border: 1px solid var(--blood-light); border-radius: 3px; }
   .nav-cta:hover { background: var(--blood-light) !important; }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 300; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #e4e4e8; border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
   .hero { position: relative; padding: 96px 40px 80px; text-align: center; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% -10%, rgba(139,0,0,0.18) 0%, transparent 65%); pointer-events: none; }
   .hero-eyebrow { display: inline-block; font-family: 'Special Elite', serif; font-size: 0.72rem; letter-spacing: 4px; color: var(--blood-light); border: 1px solid var(--border-red); padding: 6px 18px; border-radius: 2px; margin-bottom: 32px; text-transform: uppercase; }
@@ -110,20 +122,54 @@
   .footer-links a:hover { color: var(--muted); }
   .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.12); font-family: 'Special Elite', serif; letter-spacing: 1px; }
   @keyframes flicker { 0%,89%,91%,95%,100% { opacity: 1; } 90% { opacity: 0.35; } 93% { opacity: 0.7; } 94% { opacity: 0.4; } }
-  @media (max-width: 768px) { nav { padding: 14px 20px; } .nav-links { gap: 16px; } .nav-links li:not(:last-child) { display: none; } .hero { padding: 64px 20px 56px; } .stats { flex-wrap: wrap; } .stat { padding: 20px 28px; } .section { padding: 52px 20px; } .email-band { padding: 52px 20px; } .map-wrap { height: 360px; } footer { padding: 24px 20px; flex-direction: column; text-align: center; } .footer-links { justify-content: center; } }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; position: relative; }
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(8,8,16,0.98);
+      border-bottom: 1px solid var(--border-red);
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 0;
+      z-index: 300;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-bottom: 1px solid var(--border); }
+    .nav-links a { display: block; padding: 14px 24px; font-size: 1rem; }
+    .nav-links .nav-cta { margin: 8px 16px 12px; border-radius: 3px; text-align: center; display: block; }
+    .hero { padding: 64px 20px 56px; }
+    .stats { flex-wrap: wrap; }
+    .stat { padding: 20px 24px; }
+    .section { padding: 52px 20px; }
+    .email-band { padding: 52px 20px; }
+    .map-wrap { height: 360px; }
+    footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
 </style>
 </head>
 <body>
+
 <nav>
   <a href="/" class="logo">Creepy<span>Coords</span></a>
-  <ul class="nav-links">
-    <li><a href="#map">Map</a></li>
-    <li><a href="#stories">Stories</a></li>
-    <li><a href="#categories">Categories</a></li>
-    <li><a href="/submit">Submit</a></li>
-    <li><a href="#map" class="nav-cta">📍 Explore Near Me</a></li>
+  <button class="hamburger" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navMenu">
+    <li><a href="#map" onclick="closeNav()">Map</a></li>
+    <li><a href="/stories" onclick="closeNav()">Stories</a></li>
+    <li><a href="/submit" onclick="closeNav()">Submit</a></li>
+    <li><a href="#map" class="nav-cta" onclick="closeNav()">📍 Explore Near Me</a></li>
   </ul>
 </nav>
+
 <section class="hero">
   <div class="hero-eyebrow">🕯 Real Places. Real Dread.</div>
   <h1>The World's Most<em>Haunted</em>Places, Mapped.</h1>
@@ -133,12 +179,14 @@
     <a href="#stories" class="btn-ghost">Read Latest Stories →</a>
   </div>
 </section>
+
 <div class="stats">
   <div class="stat"><span class="stat-num">612</span><span class="stat-label">Mapped Locations</span></div>
   <div class="stat"><span class="stat-num">50</span><span class="stat-label">US States</span></div>
   <div class="stat"><span class="stat-num">38</span><span class="stat-label">Countries</span></div>
   <div class="stat"><span class="stat-num">☠☠☠☠☠</span><span class="stat-label">Verified & Documented</span></div>
 </div>
+
 <section class="section" id="map">
   <div class="section-header">
     <h2 class="section-title">Haunted <span>Near You</span></h2>
@@ -146,6 +194,7 @@
   </div>
   <div class="map-wrap"><div id="map"></div></div>
 </section>
+
 <section class="section" id="stories">
   <div class="section-header">
     <h2 class="section-title">Latest <span>Stories</span></h2>
@@ -178,6 +227,7 @@
     </div>
   </div>
 </section>
+
 <section class="section" id="categories" style="padding-top:0;">
   <div class="section-header"><h2 class="section-title">Browse by <span>Category</span></h2></div>
   <div class="cats">
@@ -191,6 +241,7 @@
     <div class="cat" onclick="location.href='/stories'"><span class="cat-icon">🌲</span><div><span class="cat-name">Forests & Woods</span><span class="cat-count">78 locations</span></div></div>
   </div>
 </section>
+
 <div class="email-band" id="newsletter">
   <h2>Every Friday at Midnight</h2>
   <p>One haunted location. One verified story. Delivered to your inbox every Friday night — just when you should be sleeping.</p>
@@ -201,11 +252,13 @@
   <div class="email-msg" id="emailMsg">You are in. Check your inbox Friday night.</div>
   <p class="email-fine">No spam. Unsubscribe anytime. We write in the dark.</p>
 </div>
+
 <section class="submit-band">
   <h2>Know a Haunted Place?</h2>
   <p>Every story on this site was submitted by someone who was there. If you have experienced something you cannot explain, we want to hear it.</p>
   <a href="/submit" class="btn-primary">Submit Your Story</a>
 </section>
+
 <footer>
   <a href="/" class="footer-logo">CreepyCoords</a>
   <ul class="footer-links">
@@ -215,13 +268,23 @@
   </ul>
   <span class="footer-copy">2026 CreepyCoords. Real Places. Real Dread.</span>
 </footer>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+// Hamburger menu
+document.getElementById('menuBtn').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('navMenu').classList.toggle('open');
+});
+function closeNav() {
+  document.getElementById('menuBtn').classList.remove('open');
+  document.getElementById('navMenu').classList.remove('open');
+}
+
+// Map
 var map = L.map('map', { center: [30, 10], zoom: 2, zoomControl: true, scrollWheelZoom: false });
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'OpenStreetMap contributors', maxZoom: 18 }).addTo(map);
 var pinIcon = L.divIcon({ className: '', html: '<div style="width:12px;height:12px;background:#B22222;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid rgba(255,255,255,0.8);box-shadow:0 0 8px rgba(178,34,34,0.8);"></div>', iconSize: [12,12], iconAnchor: [6,12], popupAnchor: [0,-14] });
-
-// url이 있으면 Read the Story, null이면 Coming Soon
 var locations = [
   {lat:47.6062,lng:-122.3321,name:'Seattle Underground',loc:'Seattle, WA',type:'Underground',scare:'SSSS',url:'/stories/seattle-underground'},
   {lat:40.3978,lng:-105.5214,name:'The Stanley Hotel',loc:'Estes Park, CO',type:'Hotel',scare:'SSSSS',url:'/stories/stanley-hotel'},
@@ -280,14 +343,13 @@ var locations = [
   {lat:36.3504,lng:127.3845,name:'Daejeon Abandoned Villa',loc:'Daejeon, South Korea',type:'Abandoned Villa',scare:'SSSS',url:null},
   {lat:35.5384,lng:129.3114,name:'Ulsan Abandoned Factory',loc:'Ulsan, South Korea',type:'Abandoned Industrial',scare:'SSS',url:null}
 ];
-
 locations.forEach(function(loc) {
   var scare = loc.scare.split('').map(function(s){ return s === 'S' ? '☠' : '☆'; }).join('');
   var btn = loc.url
-    ? '<a href="'+loc.url+'" class="popup-btn">Read the Story →</a>'
+    ? '<a href="'+loc.url+'" class="popup-btn">Read the Story</a>'
     : '<span class="popup-btn coming-soon">🕯 Coming Soon</span>';
   L.marker([loc.lat,loc.lng],{icon:pinIcon}).addTo(map).bindPopup(
-    '<div class="popup-inner"><span class="popup-tag">'+loc.type+'</span><div class="popup-title">'+loc.name+'</div><div class="popup-loc">📍 '+loc.loc+'</div><span class="popup-scare">'+scare+'</span>'+btn+'</div>',
+    '<div class="popup-inner"><span class="popup-tag">'+loc.type+'</span><div class="popup-title">'+loc.name+'</div><div class="popup-loc">'+loc.loc+'</div><span class="popup-scare">'+scare+'</span>'+btn+'</div>',
     {maxWidth:220}
   );
 });
