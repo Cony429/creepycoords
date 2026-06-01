@@ -57,14 +57,14 @@
   .section-title span { color: var(--blood-light); }
   .section-link { font-family: 'Special Elite', serif; font-size: 0.85rem; color: #fff; letter-spacing: 1.5px; transition: all 0.2s; background: rgba(139,0,0,0.4); border: 1px solid var(--blood-light); padding: 7px 18px; border-radius: 3px; }
   .section-link:hover { background: var(--blood); color: #fff; }
-  .map-wrap { border: 1px solid var(--border-red); border-radius: 6px; overflow: hidden; height: 500px; }
+  .map-wrap { border: 1px solid var(--border-red); border-radius: 6px; overflow: hidden; height: 440px; position: relative; z-index: 0; }
   #map { width: 100%; height: 100%; }
   .leaflet-container { background: #0d0d1a !important; font-family: 'Special Elite', serif; }
   .leaflet-tile { filter: brightness(0.35) saturate(0.2) hue-rotate(190deg); }
   .leaflet-control-zoom a { background: #13131f !important; color: var(--blood-light) !important; border-color: var(--border-red) !important; }
   .leaflet-control-zoom a:hover { background: var(--blood) !important; color: #fff !important; }
   .leaflet-control-attribution { background: rgba(0,0,0,0.5) !important; color: rgba(255,255,255,0.15) !important; font-size: 9px !important; }
-  .leaflet-control-attribution a { color: rgba(255,255,255,0.2) !important; }
+  .leaflet-control-attribution a { color: rgba(255,255,255,0.2) !important; } .leaflet-map-pane, .leaflet-tile-pane, .leaflet-marker-pane, .leaflet-popup-pane { z-index: 1 !important; } .leaflet-control-container { z-index: 2 !important; }
   .leaflet-popup-content-wrapper { background: #0a0a14 !important; border: 1px solid var(--border-red) !important; border-radius: 5px !important; box-shadow: 0 8px 32px rgba(0,0,0,0.8) !important; padding: 0 !important; }
   .leaflet-popup-content { margin: 0 !important; width: 210px !important; }
   .leaflet-popup-tip { background: #0a0a14 !important; }
@@ -165,12 +165,34 @@
   <div class="stat"><span class="stat-num">38</span><span class="stat-label">Countries</span></div>
   <div class="stat"><span class="stat-num">☠☠☠☠☠</span><span class="stat-label">Verified & Documented</span></div>
 </div>
-<section class="section" id="map">
-  <div class="section-header">
-    <h2 class="section-title">🗺 Haunted <span>Near You</span></h2>
-    <span class="section-link">Click pins to read stories →</span>
+<div style="max-width:1120px;margin:0 auto;padding:72px 40px 16px">
+  <h2 style="font-family:Creepster,cursive;font-size:2.1rem;color:#fff;letter-spacing:2px;margin-bottom:16px">🗺 Haunted <span style="color:#B22222">Near You</span></h2>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+    <button onclick="flyTo(20,0,2)" style="font-family:Special Elite,serif;font-size:0.75rem;padding:8px 16px;background:rgba(139,0,0,0.4);border:1px solid rgba(139,0,0,0.6);color:#ddd;border-radius:3px;cursor:pointer">🌍 World</button>
+    <button onclick="flyTo(39.5,-98.3,4)" style="font-family:Special Elite,serif;font-size:0.75rem;padding:8px 16px;background:rgba(139,0,0,0.4);border:1px solid rgba(139,0,0,0.6);color:#ddd;border-radius:3px;cursor:pointer">🇺🇸 USA</button>
+    <button onclick="flyTo(36.5,127.9,6)" style="font-family:Special Elite,serif;font-size:0.75rem;padding:8px 16px;background:rgba(139,0,0,0.4);border:1px solid rgba(139,0,0,0.6);color:#ddd;border-radius:3px;cursor:pointer">🇰🇷 Korea</button>
+    <button onclick="flyTo(54,15,4)" style="font-family:Special Elite,serif;font-size:0.75rem;padding:8px 16px;background:rgba(139,0,0,0.4);border:1px solid rgba(139,0,0,0.6);color:#ddd;border-radius:3px;cursor:pointer">🇪🇺 Europe</button>
+    <button onclick="flyTo(35,105,4)" style="font-family:Special Elite,serif;font-size:0.75rem;padding:8px 16px;background:rgba(139,0,0,0.4);border:1px solid rgba(139,0,0,0.6);color:#ddd;border-radius:3px;cursor:pointer">🌏 Asia</button>
+    <button onclick="flyTo(36,138,5)" style="font-family:Special Elite,serif;font-size:0.75rem;padding:8px 16px;background:rgba(139,0,0,0.4);border:1px solid rgba(139,0,0,0.6);color:#ddd;border-radius:3px;cursor:pointer">🇯🇵 Japan</button>
   </div>
   <div class="map-wrap"><div id="map"></div></div>
+</section>
+
+<section class="section" id="by-state" style="padding-top:0">
+  <div class="section-header">
+    <h2 class="section-title">Haunted Places <span>By State</span></h2>
+    <a href="/haunted-places" class="section-link">View All States →</a>
+  </div>
+  <div class="cats">
+    <a href="/haunted-places/texas" class="cat" style="text-decoration:none"><span class="cat-icon">🤠</span><div><span class="cat-name">Texas</span><span class="cat-count">43 haunted locations</span></div></a>
+    <a href="/haunted-places/massachusetts" class="cat" style="text-decoration:none"><span class="cat-icon">🧙</span><div><span class="cat-name">Massachusetts</span><span class="cat-count">27 haunted locations</span></div></a>
+    <a href="/haunted-places/california" class="cat" style="text-decoration:none"><span class="cat-icon">��</span><div><span class="cat-name">California</span><span class="cat-count">51 haunted locations</span></div></a>
+    <a href="/haunted-places/louisiana" class="cat" style="text-decoration:none"><span class="cat-icon">⚰️</span><div><span class="cat-name">Louisiana</span><span class="cat-count">38 haunted locations</span></div></a>
+    <a href="/haunted-places/pennsylvania" class="cat" style="text-decoration:none"><span class="cat-icon">⚔️</span><div><span class="cat-name">Pennsylvania</span><span class="cat-count">35 haunted locations</span></div></a>
+    <a href="/haunted-places/new-york" class="cat" style="text-decoration:none"><span class="cat-icon">🗽</span><div><span class="cat-name">New York</span><span class="cat-count">44 haunted locations</span></div></a>
+    <a href="/haunted-places/ohio" class="cat" style="text-decoration:none"><span class="cat-icon">🕯️</span><div><span class="cat-name">Ohio</span><span class="cat-count">31 haunted locations</span></div></a>
+    <a href="/haunted-places/virginia" class="cat" style="text-decoration:none"><span class="cat-icon">⚔️</span><div><span class="cat-name">Virginia</span><span class="cat-count">28 haunted locations</span></div></a>
+  </div>
 </section>
 <section class="section" id="stories">
   <div class="section-header">
@@ -334,6 +356,7 @@ locations.forEach(function(loc) {
     {maxWidth:220}
   );
 });
+function flyTo(lat,lng,zoom){map.flyTo([lat,lng],zoom,{duration:1.2})}
 function handleSubscribe(){
   var input=document.getElementById('emailInput');
   var msg=document.getElementById('emailMsg');

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/favicon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit a Haunted Location | CreepyCoords</title>
+<meta name="description" content="Submit a haunted location or paranormal account to CreepyCoords. Real places. Real dread.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FG91VP2HX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-8FG91VP2HX");</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --blood: #8B0000; --blood-light: #B22222; --fog: #0e0e1a; --text: #e4e4e8; --muted: #777; --border: rgba(255,255,255,0.07); --border-red: rgba(139,0,0,0.35); }
+  body { background: var(--fog); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+  a { text-decoration: none; color: inherit; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 1px solid var(--border-red); background: rgba(8,8,16,0.92); position: sticky; top: 0; z-index: 200; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Creepster', cursive; font-size: 1.7rem; color: var(--blood-light); letter-spacing: 3px; text-shadow: 0 0 24px rgba(139,0,0,0.45); animation: flicker 9s infinite; }
+  .logo span { color: #ddd; }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); font-family: 'Special Elite', serif; font-size: 0.85rem; letter-spacing: 1.5px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blood-light); }
+  .page-wrap { max-width: 680px; margin: 0 auto; padding: 72px 40px 80px; }
+  h1 { font-family: 'Creepster', cursive; font-size: clamp(2.2rem, 6vw, 3.5rem); color: #fff; letter-spacing: 3px; margin-bottom: 16px; }
+  h1 span { color: var(--blood-light); }
+  .subtitle { font-family: 'Special Elite', serif; color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 48px; }
+  .form-group { margin-bottom: 24px; }
+  label { display: block; font-family: 'Special Elite', serif; font-size: 0.8rem; color: #bbb; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  input, textarea, select { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 13px 16px; font-family: 'Special Elite', serif; font-size: 0.9rem; border-radius: 3px; outline: none; transition: border-color 0.2s; }
+  input:focus, textarea:focus, select:focus { border-color: rgba(139,0,0,0.6); }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+  textarea { resize: vertical; min-height: 140px; }
+  select option { background: #1a1a2e; }
+  .btn-submit { background: var(--blood); color: #fff; border: 1px solid var(--blood-light); padding: 14px 36px; font-family: 'Special Elite', serif; font-size: 0.95rem; letter-spacing: 1.5px; cursor: pointer; border-radius: 3px; transition: all 0.2s; width: 100%; margin-top: 8px; }
+  .btn-submit:hover { background: var(--blood-light); transform: translateY(-2px); }
+  .success-msg { display: none; background: rgba(0,180,0,0.1); border: 1px solid rgba(0,180,0,0.3); border-radius: 5px; padding: 20px 24px; font-family: 'Special Elite', serif; color: #4caf50; margin-top: 24px; text-align: center; }
+  footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Creepster', cursive; font-size: 1.3rem; color: rgba(139,0,0,0.5); letter-spacing: 2px; }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.12); font-family: 'Special Elite', serif; }
+  @keyframes flicker { 0%,89%,91%,95%,100% { opacity: 1; } 90% { opacity: 0.35; } 93% { opacity: 0.7; } 94% { opacity: 0.4; } }
+  @media (max-width: 768px) { nav { padding: 14px 20px; } .page-wrap { padding: 48px 20px 56px; } footer { padding: 24px 20px; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo"><img src="https://raw.githubusercontent.com/Cony429/creepycoords/main/creepycoords_favicon.png" style="width:48px;height:48px;object-fit:contain;margin-right:10px;vertical-align:middle;position:relative;top:-2px">Creepy<span>Coords</span></a>
+  <ul class="nav-links">
+    <li><a href="/#map">Map</a></li>
+    <li><a href="/stories">Stories</a></li>
+    <li><a href="/submit">Submit</a></li>
+  </ul>
+</nav>
+<div class="page-wrap">
+  <h1>Submit a <span>Story</span></h1>
+  <p class="subtitle">Every story on this site was submitted by someone who was there. If you have experienced something you cannot explain — a haunted location, a paranormal account, a place that felt wrong — we want to hear it.</p>
+  <form id="submitForm" action="https://formspree.io/f/mvzyokok" method="POST">
+    <div class="form-group">
+      <label>Location Name *</label>
+      <input type="text" name="location_name" placeholder="e.g. The Old Miller House" required>
+    </div>
+    <div class="form-group">
+      <label>City / Country *</label>
+      <input type="text" name="location_city" placeholder="e.g. Austin, Texas, USA" required>
+    </div>
+    <div class="form-group">
+      <label>Type of Location</label>
+      <select name="location_type">
+        <option value="">Select a type...</option>
+        <option>Abandoned Building</option>
+        <option>Hotel</option>
+        <option>Hospital</option>
+        <option>Prison</option>
+        <option>Cemetery</option>
+        <option>House / Residence</option>
+        <option>Road / Highway</option>
+        <option>Forest / Nature</option>
+        <option>Church</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Your Experience *</label>
+      <textarea name="experience" placeholder="Describe what happened. What did you see, hear, or feel? When did it occur? Who else was present?" required></textarea>
+    </div>
+    <div class="form-group">
+      <label>Your Name (optional)</label>
+      <input type="text" name="name" placeholder="Anonymous is fine">
+    </div>
+    <div class="form-group">
+      <label>Your Email (optional)</label>
+      <input type="email" name="email" placeholder="We'll only contact you if we publish your story">
+    </div>
+    <button type="submit" class="btn-submit">Submit Your Story</button>
+    <div class="success-msg" id="successMsg">Your story has been received. If we publish it, we will contact you. Thank you for contributing to the record.</div>
+  </form>
+</div>
+<footer>
+  <a href="/" class="footer-logo">CreepyCoords</a>
+  <span class="footer-copy">© 2026 CreepyCoords — Real Places. Real Dread.</span>
+</footer>
+<script>
+document.getElementById('submitForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+    .then(function(r) {
+      if (r.ok) {
+        form.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      }
+    });
+});
+</script>
+</body>
+</html>
