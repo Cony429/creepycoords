@@ -348,7 +348,17 @@ var locations = [
   {lat:46.7600,lng:23.5800,name:'Hoia Baciu Forest',loc:'Cluj-Napoca, Romania',type:'Haunted Forest',scare:'SSSSS',url:'/stories/hoia-baciu'},
   {lat:27.0961,lng:76.2907,name:'Bhangarh Fort',loc:'Rajasthan, India',type:'Forbidden Fort',scare:'SSSSS',url:'/stories/bhangarh-fort'},
   {lat:-6.9839,lng:110.4107,name:'Lawang Sewu',loc:'Semarang, Indonesia',type:'Colonial Building',scare:'SSSSS',url:'/stories/lawang-sewu'},
-  {lat:40.1837,lng:-75.5499,name:'Pennhurst Asylum',loc:'Spring City, PA',type:'Abandoned Asylum',scare:'SSSSS',url:'/stories/pennhurst-asylum'}
+  {lat:40.1837,lng:-75.5499,name:'Pennhurst Asylum',loc:'Spring City, PA',type:'Abandoned Asylum',scare:'SSSSS',url:'/stories/pennhurst-asylum'},
+  {lat:34.8394,lng:134.6939,name:'Himeji Castle (Okiku Well)',loc:'Himeji, Japan',type:'Haunted Castle',scare:'SSSS',url:null},
+  {lat:35.0094,lng:135.6486,name:'Kiyotaki Tunnel',loc:'Kyoto, Japan',type:'Cursed Tunnel',scare:'SSSSS',url:null},
+  {lat:33.6358,lng:130.6494,name:'Old Inunaki Tunnel',loc:'Fukuoka, Japan',type:'Cursed Tunnel',scare:'SSSSS',url:null},
+  {lat:41.3267,lng:141.1075,name:'Mount Osore (Osorezan)',loc:'Aomori, Japan',type:'Gate to the Underworld',scare:'SSSSS',url:null},
+  {lat:32.6278,lng:129.7386,name:'Hashima Island (Gunkanjima)',loc:'Nagasaki, Japan',type:'Abandoned Island',scare:'SSSS',url:null},
+  {lat:35.7290,lng:139.7190,name:'Sunshine 60 Tower',loc:'Ikebukuro, Tokyo',type:'Haunted Skyscraper',scare:'SSSS',url:null},
+  {lat:35.6809,lng:139.7117,name:'Sendagaya Tunnel',loc:'Tokyo, Japan',type:'Haunted Tunnel',scare:'SSSS',url:null},
+  {lat:35.7035,lng:139.7128,name:'Toyama Park',loc:'Shinjuku, Tokyo',type:'Haunted Park',scare:'SSSS',url:null},
+  {lat:43.3328,lng:141.8550,name:'Bibai Round Schoolhouse',loc:'Hokkaido, Japan',type:'Abandoned School',scare:'SSSS',url:null},
+  {lat:35.7700,lng:138.7400,name:'Oiran Buchi',loc:'Yamanashi, Japan',type:'Cursed Gorge',scare:'SSSSS',url:null}
 ];
 locations.forEach(function(loc) {
   var scare = loc.scare.split('').map(function(s){ return s === 'S' ? '☠' : '☆'; }).join('');
