@@ -358,7 +358,17 @@ var locations = [
   {lat:35.6809,lng:139.7117,name:'Sendagaya Tunnel',loc:'Tokyo, Japan',type:'Haunted Tunnel',scare:'SSSS',url:null},
   {lat:35.7035,lng:139.7128,name:'Toyama Park',loc:'Shinjuku, Tokyo',type:'Haunted Park',scare:'SSSS',url:null},
   {lat:43.3328,lng:141.8550,name:'Bibai Round Schoolhouse',loc:'Hokkaido, Japan',type:'Abandoned School',scare:'SSSS',url:null},
-  {lat:35.7700,lng:138.7400,name:'Oiran Buchi',loc:'Yamanashi, Japan',type:'Cursed Gorge',scare:'SSSSS',url:null}
+  {lat:35.7700,lng:138.7400,name:'Oiran Buchi',loc:'Yamanashi, Japan',type:'Cursed Gorge',scare:'SSSSS',url:null},
+  {lat:47.3564,lng:-0.4439,name:'Chateau de Brissac',loc:'Loire Valley, France',type:'Haunted Castle',scare:'SSSS',url:'/stories/chateau-de-brissac'},
+  {lat:55.9486,lng:-3.1999,name:'Edinburgh Castle',loc:'Edinburgh, Scotland',type:'Haunted Castle',scare:'SSSSS',url:'/stories/edinburgh-castle'},
+  {lat:45.5149,lng:25.3672,name:'Bran Castle (Draculas Castle)',loc:'Transylvania, Romania',type:'Legendary Castle',scare:'SSSS',url:'/stories/bran-castle'},
+  {lat:53.0386,lng:-7.8103,name:'Leap Castle',loc:'County Offaly, Ireland',type:'Haunted Castle',scare:'SSSSS',url:'/stories/leap-castle'},
+  {lat:55.9486,lng:-3.1875,name:'South Bridge Vaults',loc:'Edinburgh, Scotland',type:'Underground Vaults',scare:'SSSSS',url:null},
+  {lat:55.9469,lng:-3.1911,name:'Greyfriars Kirkyard',loc:'Edinburgh, Scotland',type:'Haunted Cemetery',scare:'SSSSS',url:null},
+  {lat:47.1011,lng:13.6469,name:'Moosham Castle (Witch Castle)',loc:'Salzburg, Austria',type:'Witch Trial Castle',scare:'SSSS',url:null},
+  {lat:52.2667,lng:12.9167,name:'Beelitz-Heilstaetten',loc:'Brandenburg, Germany',type:'Abandoned Hospital',scare:'SSSS',url:null},
+  {lat:56.0153,lng:23.4169,name:'Hill of Crosses',loc:'Siauliai, Lithuania',type:'Sacred Site',scare:'SSSS',url:null},
+  {lat:50.2470,lng:4.9333,name:'Chateau Miranda (Noisy Castle)',loc:'Namur, Belgium',type:'Abandoned Castle',scare:'SSSS',url:null}
 ];
 locations.forEach(function(loc) {
   var scare = loc.scare.split('').map(function(s){ return s === 'S' ? '☠' : '☆'; }).join('');
