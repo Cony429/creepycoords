@@ -47,3 +47,7 @@ borley-rectory
 highgate-cemetery
 bell-witch
 moundsville
+kilmainham-gaol
+greyfriars-kirkyard
+moosham-castle
+bang-kwang

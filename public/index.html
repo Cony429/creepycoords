@@ -201,6 +201,22 @@
     <a href="/stories" class="section-link">View All</a>
   </div>
   <div class="cards">
+    <div class="card" onclick="location.href='/stories/kiyotaki-tunnel'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/kiyotaki-tunnel.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Cursed Tunnel</span></div>
+      <div class="card-body"><div class="card-loc">Sagano, Kyoto</div><div class="card-title">Kiyotaki Tunnel: Kyoto's Cursed Tunnel of the Dead</div><div class="card-excerpt">If the signal turns green, don't enter. The length seems to change, and glancing in your mirror inside may show a woman who isn't there.</div><div class="card-foot"><span>9 min read</span><span class="card-scare">SSSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/30-east-drive'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/30-east-drive.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Haunted House</span></div>
+      <div class="card-body"><div class="card-loc">Pontefract, England</div><div class="card-title">30 East Drive: The Black Monk of Pontefract</div><div class="card-excerpt">An ordinary English house, one of Europe's most violent poltergeists. The Black Monk dragged a teenage girl up the stairs by her neck.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/sunshine-60'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/sunshine-60.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Cursed Tower</span></div>
+      <div class="card-body"><div class="card-loc">Ikebukuro, Tokyo</div><div class="card-title">Sunshine 60: The Tokyo Skyscraper Built on an Execution Ground</div><div class="card-excerpt">One of Asia's tallest towers stands where Sugamo Prison's gallows once were. Shoppers ride escalators above ground where people were hanged.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/diplomat-hotel'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/diplomat-hotel.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Abandoned Hotel</span></div>
+      <div class="card-body"><div class="card-loc">Baguio, Philippines</div><div class="card-title">Diplomat Hotel: The Headless Ghosts of Baguio</div><div class="card-excerpt">A former seminary where priests and nuns were slaughtered in WWII, some beheaded. Now headless figures are said to walk its empty halls.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSS</span></div></div>
+    </div>
     <div class="card" onclick="location.href='/stories/moosham-castle'">
       <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/moosham-castle.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Witch Trial Castle</span></div>
       <div class="card-body"><div class="card-loc">Salzburg, Austria</div><div class="card-title">Moosham Castle: Austria's Witch Castle and the Trials of Death</div><div class="card-excerpt">Hundreds were tortured and executed as witches here. Centuries later, mutilated animals and whispers of werewolves living in the walls.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">SSSS</span></div></div>
@@ -413,11 +429,11 @@ var locations = [
   {lat:-6.9839,lng:110.4107,name:'Lawang Sewu',loc:'Semarang, Indonesia',type:'Colonial Building',scare:'SSSSS',url:'/stories/lawang-sewu'},
   {lat:40.1837,lng:-75.5499,name:'Pennhurst Asylum',loc:'Spring City, PA',type:'Abandoned Asylum',scare:'SSSSS',url:'/stories/pennhurst-asylum'},
   {lat:34.8394,lng:134.6939,name:'Himeji Castle (Okiku Well)',loc:'Himeji, Japan',type:'Haunted Castle',scare:'SSSS',url:null},
-  {lat:35.0094,lng:135.6486,name:'Kiyotaki Tunnel',loc:'Kyoto, Japan',type:'Cursed Tunnel',scare:'SSSSS',url:null},
+  {lat:35.0094,lng:135.6486,name:'Kiyotaki Tunnel',loc:'Kyoto, Japan',type:'Cursed Tunnel',scare:'SSSSS',url:'/stories/kiyotaki-tunnel'},
   {lat:33.6358,lng:130.6494,name:'Old Inunaki Tunnel',loc:'Fukuoka, Japan',type:'Cursed Tunnel',scare:'SSSSS',url:null},
   {lat:41.3267,lng:141.1075,name:'Mount Osore (Osorezan)',loc:'Aomori, Japan',type:'Gate to the Underworld',scare:'SSSSS',url:null},
   {lat:32.6278,lng:129.7386,name:'Hashima Island (Gunkanjima)',loc:'Nagasaki, Japan',type:'Abandoned Island',scare:'SSSS',url:'/stories/hashima-island'},
-  {lat:35.7290,lng:139.7190,name:'Sunshine 60 Tower',loc:'Ikebukuro, Tokyo',type:'Haunted Skyscraper',scare:'SSSS',url:null},
+  {lat:35.7290,lng:139.7190,name:'Sunshine 60 Tower',loc:'Ikebukuro, Tokyo',type:'Cursed Tower',scare:'SSSS',url:'/stories/sunshine-60'},
   {lat:35.6809,lng:139.7117,name:'Sendagaya Tunnel',loc:'Tokyo, Japan',type:'Haunted Tunnel',scare:'SSSS',url:null},
   {lat:35.7035,lng:139.7128,name:'Toyama Park',loc:'Shinjuku, Tokyo',type:'Haunted Park',scare:'SSSS',url:null},
   {lat:43.3328,lng:141.8550,name:'Bibai Round Schoolhouse',loc:'Hokkaido, Japan',type:'Abandoned School',scare:'SSSS',url:null},
@@ -449,9 +465,9 @@ var locations = [
   {lat:36.5115,lng:-93.7477,name:'1886 Crescent Hotel',loc:'Eureka Springs, Arkansas',type:'Haunted Hotel',scare:'SSSSS',url:'/stories/crescent-hotel'},
   {lat:38.0293,lng:-78.4767,name:'Old City Cemetery',loc:'Charlottesville, Virginia',type:'Haunted Cemetery',scare:'SSS',url:null},
   {lat:30.5083,lng:-90.4712,name:'The Devil Baby of New Orleans',loc:'Louisiana',type:'Legend',scare:'SSS',url:null},
-  {lat:53.7997,lng:-1.5492,name:'30 East Drive (Black Monk House)',loc:'Pontefract, England',type:'Haunted House',scare:'SSSSS',url:null},
+  {lat:53.7997,lng:-1.5492,name:'30 East Drive (Black Monk House)',loc:'Pontefract, England',type:'Haunted House',scare:'SSSSS',url:'/stories/30-east-drive'},
   {lat:52.6797,lng:-2.4494,name:'RAF Cosford',loc:'Shropshire, England',type:'Haunted Site',scare:'SSS',url:null},
-  {lat:14.5995,lng:120.9842,name:'Diplomat Hotel',loc:'Baguio, Philippines',type:'Abandoned Hotel',scare:'SSSS',url:null},
+  {lat:16.4100,lng:120.5990,name:'Diplomat Hotel',loc:'Baguio, Philippines',type:'Abandoned Hotel',scare:'SSSS',url:'/stories/diplomat-hotel'},
   {lat:3.1390,lng:101.6869,name:'Highland Towers',loc:'Kuala Lumpur, Malaysia',type:'Collapsed Building',scare:'SSSS',url:null},
   {lat:-37.8136,lng:144.9631,name:'Aradale Asylum',loc:'Ararat, Australia',type:'Abandoned Asylum',scare:'SSSS',url:null}
 ];
