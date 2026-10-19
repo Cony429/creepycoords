@@ -201,6 +201,22 @@
     <a href="/stories" class="section-link">View All</a>
   </div>
   <div class="cards">
+    <div class="card" onclick="location.href='/stories/mary-kings-close'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/mary-kings-close.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Underground</span></div>
+      <div class="card-body"><div class="card-loc">Edinburgh, Scotland</div><div class="card-title">Mary King's Close: Edinburgh's Buried Street and Little Annie</div><div class="card-excerpt">A whole street sealed and buried beneath Edinburgh, tied to plague and poverty. Visitors still leave toys for the ghost of a little girl named Annie.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/himeji-castle'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/himeji-castle.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Haunted Castle</span></div>
+      <div class="card-body"><div class="card-loc">Himeji, Japan</div><div class="card-title">Himeji Castle: The White Heron and Okiku's Well</div><div class="card-excerpt">Japan's most beautiful castle holds a dark well. Okiku, a servant thrown inside, still rises to count plates — one to nine, then a scream.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/aradale-asylum'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/aradale-asylum.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Abandoned Asylum</span></div>
+      <div class="card-body"><div class="card-loc">Ararat, Australia</div><div class="card-title">Aradale Asylum: Australia's Largest Abandoned Lunatic Asylum</div><div class="card-excerpt">An estimated 13,000 people died in this vast asylum over 130 years. Many arrived young, lived their whole lives inside, and were buried unmarked.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">SSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/capuchin-crypt'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/capuchin-crypt.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Bone Crypt</span></div>
+      <div class="card-body"><div class="card-loc">Rome, Italy</div><div class="card-title">The Capuchin Crypt: The Bone Church of Rome</div><div class="card-excerpt">Chandeliers of vertebrae, walls of skulls, robed skeletons. Decorated with the bones of 3,700 friars, and a plaque about your own death.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSSS</span></div></div>
+    </div>
     <div class="card" onclick="location.href='/stories/kiyotaki-tunnel'">
       <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/kiyotaki-tunnel.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Cursed Tunnel</span></div>
       <div class="card-body"><div class="card-loc">Sagano, Kyoto</div><div class="card-title">Kiyotaki Tunnel: Kyoto's Cursed Tunnel of the Dead</div><div class="card-excerpt">If the signal turns green, don't enter. The length seems to change, and glancing in your mirror inside may show a woman who isn't there.</div><div class="card-foot"><span>9 min read</span><span class="card-scare">SSSSS</span></div></div>
@@ -393,11 +409,11 @@ var locations = [
   {lat:36.8508,lng:-75.9779,name:'Ferry Plantation House',loc:'Virginia Beach, VA',type:'Plantation',scare:'SSS',url:null},
   {lat:48.8566,lng:2.3522,name:'Catacombs of Paris',loc:'Paris, France',type:'Underground',scare:'SSSSS',url:'/stories/catacombs-paris'},
   {lat:51.5074,lng:-0.1278,name:'The Tower of London',loc:'London, UK',type:'Castle',scare:'SSSSS',url:'/stories/tower-of-london'},
-  {lat:55.9533,lng:-3.1883,name:'Marys Kings Close',loc:'Edinburgh, Scotland',type:'Underground',scare:'SSSS',url:null},
+  {lat:55.9497,lng:-3.1903,name:"Mary King's Close",loc:'Edinburgh, Scotland',type:'Underground',scare:'SSSS',url:'/stories/mary-kings-close'},
   {lat:51.1787,lng:-1.8262,name:'Stonehenge',loc:'Wiltshire, UK',type:'Ancient Site',scare:'SSS',url:null},
   {lat:53.3498,lng:-6.2603,name:'Kilmainham Gaol',loc:'Dublin, Ireland',type:'Haunted Prison',scare:'SSSS',url:'/stories/kilmainham-gaol'},
   {lat:48.2082,lng:16.3738,name:'Vienna Catacombs',loc:'Vienna, Austria',type:'Underground',scare:'SSSS',url:null},
-  {lat:41.9028,lng:12.4964,name:'Capuchin Crypt',loc:'Rome, Italy',type:'Crypt',scare:'SSSSS',url:null},
+  {lat:41.9050,lng:12.4890,name:'Capuchin Crypt',loc:'Rome, Italy',type:'Bone Crypt',scare:'SSSSS',url:'/stories/capuchin-crypt'},
   {lat:50.0880,lng:14.4208,name:'Sedlec Ossuary',loc:'Czech Republic',type:'Church',scare:'SSSSS',url:'/stories/sedlec-ossuary'},
   {lat:35.6762,lng:139.6503,name:'Aokigahara Forest',loc:'Japan',type:'Forest',scare:'SSSSS',url:'/stories/aokigahara'},
   {lat:22.3193,lng:114.1694,name:'Suicide Cliff',loc:'Hong Kong',type:'Cliff',scare:'SSSS',url:null},
@@ -428,7 +444,7 @@ var locations = [
   {lat:27.0961,lng:76.2907,name:'Bhangarh Fort',loc:'Rajasthan, India',type:'Forbidden Fort',scare:'SSSSS',url:'/stories/bhangarh-fort'},
   {lat:-6.9839,lng:110.4107,name:'Lawang Sewu',loc:'Semarang, Indonesia',type:'Colonial Building',scare:'SSSSS',url:'/stories/lawang-sewu'},
   {lat:40.1837,lng:-75.5499,name:'Pennhurst Asylum',loc:'Spring City, PA',type:'Abandoned Asylum',scare:'SSSSS',url:'/stories/pennhurst-asylum'},
-  {lat:34.8394,lng:134.6939,name:'Himeji Castle (Okiku Well)',loc:'Himeji, Japan',type:'Haunted Castle',scare:'SSSS',url:null},
+  {lat:34.8394,lng:134.6939,name:'Himeji Castle (Okiku Well)',loc:'Himeji, Japan',type:'Haunted Castle',scare:'SSSS',url:'/stories/himeji-castle'},
   {lat:35.0094,lng:135.6486,name:'Kiyotaki Tunnel',loc:'Kyoto, Japan',type:'Cursed Tunnel',scare:'SSSSS',url:'/stories/kiyotaki-tunnel'},
   {lat:33.6358,lng:130.6494,name:'Old Inunaki Tunnel',loc:'Fukuoka, Japan',type:'Cursed Tunnel',scare:'SSSSS',url:null},
   {lat:41.3267,lng:141.1075,name:'Mount Osore (Osorezan)',loc:'Aomori, Japan',type:'Gate to the Underworld',scare:'SSSSS',url:null},
@@ -469,7 +485,7 @@ var locations = [
   {lat:52.6797,lng:-2.4494,name:'RAF Cosford',loc:'Shropshire, England',type:'Haunted Site',scare:'SSS',url:null},
   {lat:16.4100,lng:120.5990,name:'Diplomat Hotel',loc:'Baguio, Philippines',type:'Abandoned Hotel',scare:'SSSS',url:'/stories/diplomat-hotel'},
   {lat:3.1390,lng:101.6869,name:'Highland Towers',loc:'Kuala Lumpur, Malaysia',type:'Collapsed Building',scare:'SSSS',url:null},
-  {lat:-37.8136,lng:144.9631,name:'Aradale Asylum',loc:'Ararat, Australia',type:'Abandoned Asylum',scare:'SSSS',url:null}
+  {lat:-37.2858,lng:142.9289,name:'Aradale Asylum',loc:'Ararat, Australia',type:'Abandoned Asylum',scare:'SSSS',url:'/stories/aradale-asylum'}
 ];
 locations.forEach(function(loc) {
   var scare = loc.scare.split('').map(function(s){ return s === 'S' ? '☠' : '☆'; }).join('');
