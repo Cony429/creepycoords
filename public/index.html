@@ -201,6 +201,22 @@
     <a href="/stories" class="section-link">View All</a>
   </div>
   <div class="cards">
+    <div class="card" onclick="location.href='/stories/houska-castle'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/houska-castle.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Cursed Castle</span></div>
+      <div class="card-body"><div class="card-loc">Blatce, Czech Republic</div><div class="card-title">Houska Castle: The Gothic Fortress Built Over the Gateway to Hell</div><div class="card-excerpt">No water, no strategic value, defenses facing inward. Legend says it was built to seal a bottomless pit, a gateway to hell, and trap what crawled out.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/jeonju-ghost-road'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/jeonju-ghost-road.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Cursed Road</span></div>
+      <div class="card-body"><div class="card-loc">Jeonju, South Korea</div><div class="card-title">Jeonju Ghost Road: Korea's Street of Whispers</div><div class="card-excerpt">An ordinary street with an extraordinary reputation. Drivers report a woman in white, a sudden dread, and the feeling the air has gone wrong.</div><div class="card-foot"><span>8 min read</span><span class="card-scare">SSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/carnton-plantation'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/carnton-plantation.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Civil War Site</span></div>
+      <div class="card-body"><div class="card-loc">Franklin, Tennessee</div><div class="card-title">Carnton Plantation: The Bloodstained Floors of Franklin</div><div class="card-excerpt">A Civil War field hospital where the dying filled every room in one bloody evening. The floors are still stained dark, more than 150 years later.</div><div class="card-foot"><span>10 min read</span><span class="card-scare">SSSS</span></div></div>
+    </div>
+    <div class="card" onclick="location.href='/stories/molly-brown-house'">
+      <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/molly-brown-house.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Haunted House</span></div>
+      <div class="card-body"><div class="card-loc">Denver, Colorado</div><div class="card-title">Molly Brown House: The Unsinkable Ghost of Denver</div><div class="card-excerpt">The home of the Titanic survivor who refused to sink. The scent of phantom pipe smoke still drifts through rooms where no one is smoking.</div><div class="card-foot"><span>9 min read</span><span class="card-scare">SSS</span></div></div>
+    </div>
     <div class="card" onclick="location.href='/stories/warrens-occult-museum'">
       <div class="card-thumb" style="background:url(https://raw.githubusercontent.com/Cony429/creepycoords/main/warrens-occult-museum.jpg) center/cover no-repeat"><div class="card-thumb-fade"></div><span class="card-type">Haunted Museum</span></div>
       <div class="card-body"><div class="card-loc">Monroe, Connecticut</div><div class="card-title">Warren's Occult Museum: The Home of the Annabelle Doll</div><div class="card-excerpt">The real Annabelle, a worn Raggedy Ann doll, sits locked in a glass case marked "Positively Do Not Open." The Warrens' room of cursed objects.</div><div class="card-foot"><span>11 min read</span><span class="card-scare">SSSSS</span></div></div>
@@ -411,10 +427,10 @@ var locations = [
   {lat:29.4241,lng:-98.4936,name:'The Menger Hotel',loc:'San Antonio, TX',type:'Hotel',scare:'SSSS',url:null},
   {lat:41.2565,lng:-95.9345,name:'Villisca Axe Murder House',loc:'Iowa',type:'Historic Home',scare:'SSSSS',url:'/stories/villisca-axe-murder-house'},
   {lat:44.9778,lng:-93.2650,name:'Wabasha Street Caves',loc:'St. Paul, MN',type:'Underground',scare:'SSSS',url:null},
-  {lat:39.7392,lng:-104.9903,name:'Molly Brown House',loc:'Denver, CO',type:'Historic Home',scare:'SSS',url:null},
+  {lat:39.7376,lng:-104.9811,name:'Molly Brown House',loc:'Denver, Colorado',type:'Haunted House',scare:'SSS',url:'/stories/molly-brown-house'},
   {lat:42.3601,lng:-71.0589,name:'Omni Parker House',loc:'Boston, MA',type:'Hotel',scare:'SSS',url:null},
   {lat:37.7749,lng:-122.4194,name:'Queen Anne Hotel',loc:'San Francisco, CA',type:'Hotel',scare:'SSS',url:null},
-  {lat:36.1627,lng:-86.7816,name:'Carnton Plantation',loc:'Franklin, TN',type:'Plantation',scare:'SSSS',url:null},
+  {lat:35.9087,lng:-86.8575,name:'Carnton Plantation',loc:'Franklin, Tennessee',type:'Civil War Site',scare:'SSSS',url:'/stories/carnton-plantation'},
   {lat:38.9072,lng:-77.0369,name:'Octagon House',loc:'Washington DC',type:'Historic Home',scare:'SSS',url:null},
   {lat:33.7490,lng:-84.3880,name:'Oakland Cemetery',loc:'Atlanta, GA',type:'Cemetery',scare:'SSS',url:null},
   {lat:33.5207,lng:-86.7690,name:'Sloss Furnaces',loc:'Birmingham, Alabama',type:'Haunted Ironworks',scare:'SSSS',url:'/stories/sloss-furnaces'},
@@ -448,7 +464,7 @@ var locations = [
   {lat:33.4996,lng:126.5312,name:'Manjanggul Cave',loc:'Jeju Island',type:'Cave',scare:'SSS',url:null},
   {lat:35.1796,lng:129.0756,name:'Busan Cinema Tunnel',loc:'Busan, South Korea',type:'Tunnel',scare:'SSS',url:null},
   {lat:37.4563,lng:126.7052,name:'Incheon Wolmido Island',loc:'Incheon, South Korea',type:'Abandoned Site',scare:'SSS',url:null},
-  {lat:35.8242,lng:127.1480,name:'Jeonju Ghost Road',loc:'Jeonju, Jeonbuk',type:'Historic District',scare:'SSS',url:null},
+  {lat:35.8242,lng:127.1480,name:'Jeonju Ghost Road',loc:'Jeonju, South Korea',type:'Cursed Road',scare:'SSS',url:'/stories/jeonju-ghost-road'},
   {lat:37.5140,lng:127.0270,name:'Bongeunsa Temple',loc:'Gangnam, Seoul',type:'Temple',scare:'SSS',url:null},
   {lat:36.3504,lng:127.3845,name:'Daejeon Abandoned Villa',loc:'Daejeon, South Korea',type:'Abandoned Villa',scare:'SSSS',url:null},
   {lat:35.5384,lng:129.3114,name:'Ulsan Abandoned Factory',loc:'Ulsan, South Korea',type:'Abandoned Industrial',scare:'SSS',url:null},
@@ -490,6 +506,7 @@ var locations = [
   {lat:51.5670,lng:-0.1470,name:'Highgate Cemetery',loc:'London, England',type:'Victorian Cemetery',scare:'SSSS',url:'/stories/highgate-cemetery'},
   {lat:41.3323,lng:-73.2371,name:"Warren's Occult Museum",loc:'Monroe, Connecticut',type:'Haunted Museum',scare:'SSSSS',url:'/stories/warrens-occult-museum'},
   {lat:-37.6880,lng:145.0640,name:'Larundel Asylum',loc:'Bundoora, Melbourne',type:'Abandoned Asylum',scare:'SSSS',url:'/stories/larundel-asylum'},
+  {lat:50.4869,lng:14.6056,name:'Houska Castle',loc:'Blatce, Czech Republic',type:'Cursed Castle',scare:'SSSSS',url:'/stories/houska-castle'},
   {lat:33.7527,lng:-118.1903,name:'The Queen Mary',loc:'Long Beach, California',type:'Haunted Ship',scare:'SSSSS',url:'/stories/queen-mary'},
   {lat:39.0362,lng:-80.4712,name:'Trans-Allegheny Lunatic Asylum',loc:'Weston, West Virginia',type:'Abandoned Asylum',scare:'SSSSS',url:'/stories/trans-allegheny'},
   {lat:-34.8686,lng:147.5847,name:'Monte Cristo Homestead',loc:'Junee, Australia',type:'Haunted House',scare:'SSSSS',url:'/stories/monte-cristo'},
